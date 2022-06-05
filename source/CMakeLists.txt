@@ -6,6 +6,8 @@ include_directories(SYSTEM "${SDL2_INCLUDE_DIRS}")
 
 add_executable("${CMAKE_PROJECT_NAME}"
     "main.cpp"
+
+    "system/Log.cpp"
 )
 
 target_link_libraries("${CMAKE_PROJECT_NAME}"
