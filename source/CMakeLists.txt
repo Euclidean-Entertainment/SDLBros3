@@ -8,6 +8,7 @@ add_executable("${CMAKE_PROJECT_NAME}"
     "main.cpp"
 
     "system/Log.cpp"
+    "system/Window.cpp"
 )
 
 target_link_libraries("${CMAKE_PROJECT_NAME}"
