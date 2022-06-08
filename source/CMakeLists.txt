@@ -8,6 +8,7 @@ add_executable("${CMAKE_PROJECT_NAME}"
     "main.cpp"
 
     "system/Log.cpp"
+    "system/Renderer.cpp"
     "system/Window.cpp"
 )
 

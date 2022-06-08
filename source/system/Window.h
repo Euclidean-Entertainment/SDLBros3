@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 #include <memory>
 #include <string>
+#include <system/Renderer.h>
 
 namespace System {
 
@@ -30,12 +31,16 @@ public:
     int height() const { return m_height; }
     std::string const& title() const { return m_title; }
 
+    SDL_Window const* hwnd() const { return m_hwnd; }
+    Renderer* renderer() const { return m_renderer.get(); }
+
 private:
     int m_width { DEFAULT_WIDTH };
     int m_height { DEFAULT_HEIGHT };
     std::string m_title;
 
     SDL_Window* m_hwnd { nullptr };
+    std::unique_ptr<Renderer> m_renderer { nullptr };
 };
 
 

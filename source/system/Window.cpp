@@ -56,6 +56,13 @@ bool Window::create()
         return false;
     }
 
+    // Create and attach renderer to this window
+    m_renderer = std::unique_ptr<Renderer>(new Renderer(this));
+    if (m_renderer == nullptr)
+    {
+        return false;
+    }
+
     return true;
 }
 
