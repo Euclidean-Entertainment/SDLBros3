@@ -6,9 +6,15 @@
 
 
 #include <cstdio>
+#include <engine/Game.h>
 
 int main(void)
 {
-    printf("Hello, World!");
+    auto game = Engine::Game::try_create();
+    if (game)
+    {
+        game->start();
+    }
+
     return 0;
 }
