@@ -29,8 +29,10 @@ private:
     void shutdown();
 
     void loop();
+
     void update();
     void render();
+    void handle_input();
 
 private:
     std::unique_ptr<Window> m_window { nullptr };

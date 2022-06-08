@@ -65,7 +65,6 @@ void Game::start()
     }
 
     m_running = true;
-
     loop();
     shutdown();
 }
@@ -75,59 +74,41 @@ void Game::shutdown()
 
 }
 
+void Game::handle_input()
+{
+    SDL_Event event;
+
+    while(SDL_PollEvent(&event))
+    {
+        switch (event.type)
+        {
+        case SDL_QUIT:
+            m_running = false;
+            break;
+        default:
+            break;
+        }
+    }
+}
+
 void Game::update()
 {
-    SDL_Delay(33);
+
 }
 
 void Game::render()
 {
-    static uint8_t r = 0u;
-    static uint8_t g = 0u;
-    static uint8_t b = 0u;
-
-    if (r < 255u)
-    {
-        r++;
-    }
-    else if (g < 255u)
-    {
-        g++;
-    }
-    else
-    {
-        b++;
-    }
-
-    if ((r >= 255u) && (g >= 255u) && (b >= 255u))
-    {
-        r = g = b = 0u;
-    }
-
-    m_window->renderer()->set_clear_color(r, g, b);
 }
 
 void Game::loop()
 {
-    SDL_Event event;
-
     while (m_running)
     {
-        while(SDL_PollEvent(&event))
-        {
-            switch (event.type)
-            {
-            case SDL_QUIT:
-                m_running = false;
-                break;
-            default:
-                break;
-            }
-        }
-
+        handle_input();
         update();
         render();
 
+        // Flip the render buffer to the screen
         m_window->renderer()->clear();
         m_window->renderer()->present();
     }
