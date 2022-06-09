@@ -93,7 +93,13 @@ void Game::handle_input()
 
 void Game::update()
 {
+    if (m_last_time == 0u)
+    {
+        return;
+    }
 
+    auto dt [[maybe_unused]] = static_cast<float>(m_delta_time / MILLISECONDS_PER_SECOND);
+    SDL_Delay(16);
 }
 
 void Game::render()
@@ -104,9 +110,22 @@ void Game::loop()
 {
     while (m_running)
     {
+        const auto now = SDL_GetTicks();
+
         handle_input();
         update();
         render();
+
+        m_frames++;
+        m_delta_time = SDL_GetTicks() - now;
+        m_accumulated_time += m_delta_time;
+        m_last_time = now;
+        if (m_accumulated_time >= 1000u)
+        {
+            log(LogLevel::INFO, "Tick, frames: %u", m_frames);
+            m_accumulated_time = 0u;
+            m_frames = 0u;
+        }
 
         // Flip the render buffer to the screen
         m_window->renderer()->clear();

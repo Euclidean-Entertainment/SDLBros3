@@ -13,6 +13,8 @@ namespace Engine {
 
 class Game
 {
+    static constexpr uint32_t MILLISECONDS_PER_SECOND = 1000u;
+
 public:
     static std::unique_ptr<Game> try_create();
 
@@ -37,6 +39,10 @@ private:
 private:
     std::unique_ptr<Window> m_window { nullptr };
     bool m_running { false };
+    uint32_t m_delta_time { 0ul };
+    uint32_t m_last_time { 0ul };
+    uint32_t m_accumulated_time { 0ul };
+    uint32_t m_frames { 0ul };
 };
 
 
