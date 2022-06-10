@@ -6,11 +6,14 @@
 
 #pragma once
 
-#include <memory>
 #include <system/Window.h>
+#include <engine/State.h>
+#include <memory>
+#include <stack>
 
 namespace Engine {
 
+class State;
 class Game
 {
     static constexpr uint32_t MILLISECONDS_PER_SECOND = 1000u;
@@ -43,6 +46,8 @@ private:
     uint32_t m_last_time { 0ul };
     uint32_t m_accumulated_time { 0ul };
     uint32_t m_frames { 0ul };
+
+    std::stack<State*> m_states;
 };
 
 
