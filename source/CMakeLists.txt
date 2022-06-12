@@ -6,6 +6,7 @@ include_directories(SYSTEM "${SDL2_INCLUDE_DIRS}")
 add_executable("${CMAKE_PROJECT_NAME}"
     "main.cpp"
     "engine/Game.cpp"
+    "gfx/SpriteSheet.cpp"
     "gfx/Texture.cpp"
     "system/Log.cpp"
     "system/Renderer.cpp"
