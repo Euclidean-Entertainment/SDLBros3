@@ -26,6 +26,9 @@ public:
     ~Window();
 
     bool create();
+    void clear() const;
+    void set_clear_color(uint8_t r, uint8_t g, uint8_t b);
+    void present() const;
 
     int width() const { return m_width; }
     int height() const { return m_height; }

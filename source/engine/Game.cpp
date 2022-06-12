@@ -50,6 +50,7 @@ bool Game::init()
         return false;
     }
 
+    m_window->set_clear_color(255, 255, 255);
     g_initialized = true;
     return true;
 }
@@ -110,6 +111,7 @@ void Game::loop()
 {
     while (m_running)
     {
+        m_window->clear();
         const auto now = SDL_GetTicks();
 
         handle_input();
@@ -128,8 +130,7 @@ void Game::loop()
         }
 
         // Flip the render buffer to the screen
-        m_window->renderer()->clear();
-        m_window->renderer()->present();
+        m_window->present();
     }
 }
 
