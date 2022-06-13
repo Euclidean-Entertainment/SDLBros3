@@ -98,9 +98,6 @@ void Game::update()
     {
         return;
     }
-
-    auto dt [[maybe_unused]] = static_cast<float>(m_delta_time / MILLISECONDS_PER_SECOND);
-    SDL_Delay(16);
 }
 
 void Game::render()
@@ -120,8 +117,15 @@ void Game::loop()
 
         m_frames++;
         m_delta_time = SDL_GetTicks() - now;
-        m_accumulated_time += m_delta_time;
+        m_accumulated_frame_time += m_delta_time;
         m_last_time = now;
+
+        if (TARGET_FRAME_TIME > m_delta_time)
+        {
+            SDL_Delay(TARGET_FRAME_TIME - m_delta_time);
+        }
+
+        m_accumulated_time += SDL_GetTicks() - now;
         if (m_accumulated_time >= 1000u)
         {
             log(LogLevel::INFO, "Tick, frames: %u", m_frames);

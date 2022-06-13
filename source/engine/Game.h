@@ -16,7 +16,9 @@ namespace Engine {
 class State;
 class Game
 {
-    static constexpr uint32_t MILLISECONDS_PER_SECOND = 1000u;
+    static constexpr uint32_t MILLISECONDS_PER_SECOND   = 1000u;
+    static constexpr uint32_t TARGET_FRAMERATE          = 60u;
+    static constexpr uint32_t TARGET_FRAME_TIME         = MILLISECONDS_PER_SECOND / TARGET_FRAMERATE;
 
 public:
     static std::unique_ptr<Game> try_create();
@@ -44,6 +46,7 @@ private:
     bool m_running { false };
     uint32_t m_delta_time { 0ul };
     uint32_t m_last_time { 0ul };
+    uint32_t m_accumulated_frame_time { 0ul };
     uint32_t m_accumulated_time { 0ul };
     uint32_t m_frames { 0ul };
 

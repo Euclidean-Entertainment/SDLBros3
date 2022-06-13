@@ -21,7 +21,7 @@ public:
     virtual ~State() {}
 
     virtual void handle_input(SDL_Event const& event) = 0;
-    virtual void update(float dt) = 0;
+    virtual void update() = 0;
     virtual void render() = 0;
 
 protected:
