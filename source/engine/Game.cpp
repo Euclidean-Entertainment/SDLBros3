@@ -44,12 +44,15 @@ bool Game::init()
     }
 
     // Create our window
-    m_window = Window::try_create(640, 480, "Test");
+    auto real_x_resolution = static_cast<int>(X_RESOLUTION * RENDER_SCALE);
+    auto real_y_resolution = static_cast<int>(X_RESOLUTION * RENDER_SCALE);
+    m_window = Window::try_create(real_x_resolution, real_y_resolution, "Super Mario Bros. 3");
     if (m_window == nullptr)
     {
         return false;
     }
 
+    m_window->set_render_scale(RENDER_SCALE);
     m_window->set_clear_color(255, 255, 255);
     g_initialized = true;
     return true;

@@ -20,6 +20,10 @@ class Game
     static constexpr uint32_t TARGET_FRAMERATE          = 60u;
     static constexpr uint32_t TARGET_FRAME_TIME         = MILLISECONDS_PER_SECOND / TARGET_FRAMERATE;
 
+    static constexpr int X_RESOLUTION                   = 352;
+    static constexpr int Y_RESOLUTION                   = 224;
+    static constexpr float RENDER_SCALE                 = 2.0f;
+
 public:
     static std::unique_ptr<Game> try_create();
 
