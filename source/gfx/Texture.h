@@ -34,6 +34,7 @@ public:
     int width() const { return m_width; }
     int height() const { return m_height; }
     std::string const& name() const { return m_name; }
+    bool loaded() const { return m_loaded; }
 
     SDL_Texture* texture() const { return m_texture.get(); }
 
