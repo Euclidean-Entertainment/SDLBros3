@@ -6,6 +6,7 @@
 
 #include <engine/Game.h>
 #include <system/Log.h>
+#include <states/Title.h>
 #include <SDL2/SDL.h>
 
 namespace Engine {
@@ -45,7 +46,7 @@ bool Game::init()
 
     // Create our window
     auto real_x_resolution = static_cast<int>(X_RESOLUTION * RENDER_SCALE);
-    auto real_y_resolution = static_cast<int>(X_RESOLUTION * RENDER_SCALE);
+    auto real_y_resolution = static_cast<int>(Y_RESOLUTION * RENDER_SCALE);
     m_window = Window::try_create(real_x_resolution, real_y_resolution, "Super Mario Bros. 3");
     if (m_window == nullptr)
     {
@@ -53,7 +54,10 @@ bool Game::init()
     }
 
     m_window->set_render_scale(RENDER_SCALE);
-    m_window->set_clear_color(255, 255, 255);
+    m_window->set_clear_color(0, 0, 0);
+
+    // Create the first state (title state)
+    m_states.push(new States::TitleState(*this, m_window->renderer()));
     g_initialized = true;
     return true;
 }
@@ -97,14 +101,12 @@ void Game::handle_input()
 
 void Game::update()
 {
-    if (m_last_time == 0u)
-    {
-        return;
-    }
+    m_states.top()->update();
 }
 
 void Game::render()
 {
+    m_states.top()->render();
 }
 
 void Game::loop()
