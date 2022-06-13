@@ -12,8 +12,13 @@ namespace GFX {
 
 bool Texture::load(SDL_Renderer* renderer, std::string const& path, std::string const& name)
 {
-    log(LogLevel::INFO, "Attempting to load texture %s...", path.c_str());
+    if (m_loaded)
+    {
+        log(LogLevel::WARN, "Texture %s already loaded!", name.c_str());
+        return true;
+    }
 
+    log(LogLevel::INFO, "Attempting to load texture %s...", path.c_str());
     m_texture = std::unique_ptr<SDL_Texture, Deleter>(IMG_LoadTexture(renderer, path.c_str()));
     if (!m_texture)
     {
@@ -29,6 +34,7 @@ bool Texture::load(SDL_Renderer* renderer, std::string const& path, std::string 
     }
 
     m_name = name;
+    m_loaded = true;
 
     return true;
 }
