@@ -28,6 +28,7 @@ public:
     bool create();
     void clear() const;
     void set_clear_color(uint8_t r, uint8_t g, uint8_t b);
+    void set_render_scale(float scale);
     void present() const;
 
     int width() const { return m_width; }

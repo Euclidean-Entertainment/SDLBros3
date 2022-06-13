@@ -71,6 +71,11 @@ void Window::clear() const
     m_renderer->clear();
 }
 
+void Window::set_render_scale(float scale)
+{
+    SDL_RenderSetScale(m_renderer->renderer(), scale, scale);
+}
+
 void Window::set_clear_color(uint8_t r, uint8_t g, uint8_t b)
 {
     m_renderer->set_clear_color(r, g, b);
