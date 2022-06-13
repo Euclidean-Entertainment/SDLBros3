@@ -35,6 +35,9 @@ public:
 
     void start();
 
+    constexpr int window_width() const { return static_cast<int>(X_RESOLUTION); }
+    constexpr int window_height() const { return static_cast<int>(Y_RESOLUTION); }
+
 private:
     bool init();
     void shutdown();
