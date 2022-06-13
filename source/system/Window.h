@@ -35,7 +35,7 @@ public:
     std::string const& title() const { return m_title; }
 
     SDL_Window const* hwnd() const { return m_hwnd; }
-    Renderer* renderer() const { return m_renderer.get(); }
+    SDL_Renderer* renderer() const { return m_renderer.get()->renderer(); }
 
 private:
     int m_width { DEFAULT_WIDTH };
