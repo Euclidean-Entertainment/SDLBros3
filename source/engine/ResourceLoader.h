@@ -22,8 +22,11 @@ public:
     ResourceLoader(Game& game) : m_game(game){}
     ~ResourceLoader() = default;
 
-    GFX::Texture load_texture(std::string const& path) { return load_texture(path, "default"); };
-    GFX::Texture load_texture(std::string const& path, std::string const& name);
+    template <typename T>
+    T load(std::string const& path) { return load<T>(path, "default"); }
+
+    template <typename T>
+    T load(std::string const& path, std::string const& name);
 
 private:
     Game& m_game;

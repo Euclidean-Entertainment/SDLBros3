@@ -17,7 +17,7 @@ SpriteSheet::SpriteSheet(uint8_t xsize, uint8_t ysize)
 
 bool SpriteSheet::load(ResourceLoader& loader, std::string const& path, std::string const& name)
 {
-    m_texture = loader.load_texture(path, name);
+    m_texture = loader.load<GFX::Texture>(path, name);
     return m_texture.loaded();
 }
 

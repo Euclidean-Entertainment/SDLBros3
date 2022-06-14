@@ -12,7 +12,7 @@ namespace GFX {
 
 bool BackgroundImage::load(Engine::ResourceLoader& loader, std::string const& path, std::string const& name)
 {
-    m_texture = loader.load_texture(path, name);
+    m_texture = loader.load<GFX::Texture>(path, name);
     return m_texture.loaded();
 }
 

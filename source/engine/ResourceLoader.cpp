@@ -10,7 +10,8 @@
 
 namespace Engine {
 
-GFX::Texture ResourceLoader::load_texture(std::string const& path, std::string const& name)
+template<>
+GFX::Texture ResourceLoader::load(std::string const& path, std::string const& name)
 {
     GFX::Texture texture;
 
