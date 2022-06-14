@@ -10,6 +10,12 @@
 
 namespace GFX {
 
+bool BackgroundImage::load(Engine::ResourceLoader& loader, std::string const& path, std::string const& name)
+{
+    m_texture = loader.load_texture(path, name);
+    return m_texture.loaded();
+}
+
 void BackgroundImage::draw(SDL_Renderer* renderer)
 {
     SDL_Rect draw_rect;

@@ -15,9 +15,10 @@ SpriteSheet::SpriteSheet(uint8_t xsize, uint8_t ysize)
 
 }
 
-bool SpriteSheet::load(SDL_Renderer* renderer, std::string const& path)
+bool SpriteSheet::load(ResourceLoader& loader, std::string const& path, std::string const& name)
 {
-    return m_texture.load(renderer, path);
+    m_texture = loader.load_texture(path, name);
+    return m_texture.loaded();
 }
 
 void SpriteSheet::draw(SDL_Renderer* renderer, unsigned x, unsigned y, unsigned sheet_grid_x, unsigned sheet_grid_y)

@@ -16,10 +16,10 @@ TitleState::TitleState(Engine::Game& game, SDL_Renderer* renderer) : State(game,
 void TitleState::init_resources()
 {
     // Load the background images
-    (void)m_floor.load(m_renderer, "./data/backgrounds/title/floor.png");
+    (void)m_floor.load(m_game.resource_loader(), "./data/backgrounds/title/floor.png", "floor");
     m_floor.set_y(m_game.window_height() - m_floor.height());
 
-    (void)m_curtain.load(m_renderer, "./data/backgrounds/title/curtain.png");
+    (void)m_curtain.load(m_game.resource_loader(), "./data/backgrounds/title/curtain.png", "curtain");
 }
 
 void TitleState::handle_input(SDL_Event const&)

@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <engine/ResourceLoader.h>
 #include <gfx/Texture.h>
 #include <NonCopy.h>
 
@@ -19,7 +20,7 @@ public:
     BackgroundImage() = default;
     ~BackgroundImage() = default;
 
-    bool load(SDL_Renderer* renderer, std::string const& path) { return m_texture.load(renderer, path); }
+    bool load(Engine::ResourceLoader& loader, std::string const& path, std::string const& name);
 
     void draw(SDL_Renderer* renderer);
     void set_x(int x) { m_x = x; }
@@ -33,7 +34,6 @@ public:
 private:
     int m_x { 0 };
     int m_y { 0 };
-    bool m_loaded { false };
     Texture m_texture;
 };
 

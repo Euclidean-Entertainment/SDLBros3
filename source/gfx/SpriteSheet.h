@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <engine/ResourceLoader.h>
 #include <gfx/Texture.h>
 #include <cstdint>
 
@@ -17,7 +18,7 @@ public:
     SpriteSheet(uint8_t xsize, uint8_t ysize);
     ~SpriteSheet() = default;
 
-    bool load(SDL_Renderer* renderer, std::string const& path);
+    bool load(ResourceLoader& loader, std::string const& path, std::string const& name);
     void set_xsize(uint8_t xsize) { m_xsize = xsize; }
     void set_ysize(uint8_t ysize) { m_ysize = ysize; }
     void draw(SDL_Renderer* renderer, unsigned x, unsigned y, unsigned sheet_grid_x, unsigned sheet_grid_y);
