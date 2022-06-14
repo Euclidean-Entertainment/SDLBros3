@@ -39,4 +39,15 @@ bool Texture::load(SDL_Renderer* renderer, std::string const& path, std::string 
     return true;
 }
 
+Texture& Texture::operator=(Texture&& rhs)
+{
+    m_name      = std::move(rhs.m_name);
+    m_loaded    = std::exchange(rhs.m_loaded, false);
+    m_width     = std::exchange(rhs.m_width, 0);
+    m_height    = std::exchange(rhs.m_height, 0);
+    m_texture   = std::move(rhs.m_texture);
+
+    return *this;
+}
+
 };

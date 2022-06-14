@@ -10,6 +10,7 @@
 #include <string>
 #include <memory>
 #include <NonCopy.h>
+#include <utility>
 
 namespace GFX {
 
@@ -28,6 +29,16 @@ public:
     Texture() = default;
     ~Texture() = default;
 
+    Texture(Texture&& rhs)
+        : m_name(std::move(rhs.m_name)),
+          m_loaded(std::exchange(rhs.m_loaded, false)),
+          m_width(std::exchange(rhs.m_width, 0)),
+          m_height(std::exchange(rhs.m_height, 0)),
+          m_texture(std::move(rhs.m_texture))
+    {
+
+    }
+
     bool load(SDL_Renderer* renderer, std::string const& path) { return load(renderer, path, "default"); }
     bool load(SDL_Renderer* renderer, std::string const& path, std::string const& name);
 
@@ -37,6 +48,8 @@ public:
     bool loaded() const { return m_loaded; }
 
     SDL_Texture* texture() const { return m_texture.get(); }
+
+    Texture& operator=(Texture&& rhs);
 
 private:
     std::string m_name;
