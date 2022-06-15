@@ -36,15 +36,12 @@ void FontRenderer::draw_string(SDL_Renderer* renderer, int x, int y, std::string
 
     auto total_width = static_cast<int>(message.length() * GLYPH_WIDTH);
     SDL_Texture* string_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, total_width, GLYPH_HEIGHT);
-    SDL_Rect dest_rect = { 0, 0, GLYPH_WIDTH, GLYPH_HEIGHT };
-    auto sdl_rc = SDL_SetRenderTarget(renderer, string_texture);
-    if (sdl_rc != 0)
-    {
-        log(LogLevel::INFO, "Failed to set render target for message draw!");
-        return;
-    }
-
+    SDL_SetTextureBlendMode(string_texture, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_SetRenderTarget(renderer, string_texture);
     SDL_RenderClear(renderer);
+
+    SDL_Rect dest_rect = { 0, 0, GLYPH_WIDTH, GLYPH_HEIGHT };
     for (auto const& character : message)
     {
         SDL_Rect clip_rect = { 0, 0, GLYPH_WIDTH, GLYPH_HEIGHT };
@@ -64,13 +61,8 @@ void FontRenderer::draw_string(SDL_Renderer* renderer, int x, int y, std::string
         dest_rect.x += GLYPH_WIDTH;
     }
 
-    sdl_rc = SDL_SetRenderTarget(renderer, nullptr);
-    if (sdl_rc != 0)
-    {
-        log(LogLevel::INFO, "Failed to set render target for message draw!");
-        return;
-    }
-
+    // Draw the string to the screen
+    SDL_SetRenderTarget(renderer, nullptr);
     SDL_Rect from_rect = { 0, 0, total_width, GLYPH_HEIGHT };
     SDL_Rect to_rect = { x, y, total_width, GLYPH_HEIGHT };
     SDL_RenderCopy(renderer, string_texture, &from_rect, &to_rect);
