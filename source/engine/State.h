@@ -7,7 +7,7 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "engine/Game.h"
+#include "gfx/FontRenderer.h"
 
 namespace Engine {
 
@@ -15,7 +15,7 @@ class Game;
 class State
 {
 public:
-    State(Game& game, SDL_Renderer* renderer) : m_game(game), m_renderer(renderer) {}
+    State(Game& game, SDL_Renderer* renderer);
     State(State const& rhs) = delete;
     State(State&&) = delete;
     virtual ~State() {}
@@ -27,6 +27,7 @@ public:
 protected:
     Game& m_game;
     SDL_Renderer* m_renderer;
+    GFX::FontRenderer m_font_renderer;
 };
 
 };
