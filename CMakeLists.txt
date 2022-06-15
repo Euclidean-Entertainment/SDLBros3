@@ -8,6 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     list(APPEND CXX_FLAGS
+        "-g3"
+        "-ggdb"
         "-pedantic"
         "-Wall"
         "-Wextra"
