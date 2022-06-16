@@ -15,6 +15,7 @@ namespace GFX {
 class SpriteSheet
 {
 public:
+    SpriteSheet() = default;
     SpriteSheet(uint8_t xsize, uint8_t ysize);
     ~SpriteSheet() = default;
 
