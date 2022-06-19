@@ -24,11 +24,11 @@ enum class LogLevel : int
 }
 
 // Thanks Serenity :^)
-#define log_if(flag, component, fmt, ...)              \
-    do                                                 \
-    {                                                  \
-        if constexpr (flag)                            \
-            System::log(level, fmt, ##__VA_ARGS__); \
+#define log_if(flag, level, fmt, ...)                   \
+    do                                                  \
+    {                                                   \
+        if constexpr (flag)                             \
+            System::log(level, fmt, ##__VA_ARGS__);     \
     } while (0)
 
 using System::LogLevel;
