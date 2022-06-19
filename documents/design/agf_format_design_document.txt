@@ -1,0 +1,22 @@
+Animation Group File format (AGF)
+
+This file format describes a group of animations for a specific entity. During runtime, an entity loads an AGF format
+the load all of the frames of animation into a list
+
+====== File Header ======
+8 byte magic [ASCII] (SMB3ANM\0)
+2-bytes: Animation count (up to 65535 unique animations)
+1-byte: Version Major
+1-byte: Version Minor
+4-bytes reserved for future use
+
+====== Animation Header ======
+4-bytes: AGF Anm Header ("ADH\0")
+1-byte: Number of frames in the animation
+1-byte: frame length for this animation (in 60fps ticks)
+
+====== Animation Frame Data [variable] ======
+2-byte: x position of sprite in sheet
+2-byte: y position of sprite in sheet
+1-byte: width of sprite
+1-byte: height of sprite
