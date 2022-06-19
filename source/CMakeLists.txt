@@ -27,3 +27,8 @@ target_link_libraries("${CMAKE_PROJECT_NAME}"
     PRIVATE "${SDL2_LIBRARIES}"
     PRIVATE "${SDL2_IMAGE_LIBRARIES}"
 )
+
+# Copy data directory to build directory
+add_custom_command(TARGET "${CMAKE_PROJECT_NAME}" PRE_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                   ${CMAKE_SOURCE_DIR}/data $<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>/data)
