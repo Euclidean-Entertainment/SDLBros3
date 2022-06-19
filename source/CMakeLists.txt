@@ -1,7 +1,9 @@
 find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
 include_directories("./")
 include_directories(SYSTEM "../third_party/debugbreak")
-include_directories(SYSTEM "${SDL2_INCLUDE_DIRS}")
+include_directories(SYSTEM "${SDL2_INCLUDE_DIRS}/..")
+include_directories(SYSTEM "${SDL2_IMAGE_INCLUDE_DIRS}/..")
 
 add_executable("${CMAKE_PROJECT_NAME}"
     "main.cpp"
@@ -21,5 +23,5 @@ add_executable("${CMAKE_PROJECT_NAME}"
 
 target_link_libraries("${CMAKE_PROJECT_NAME}"
     PRIVATE "${SDL2_LIBRARIES}"
-    PRIVATE "SDL2_image"
+    PRIVATE "${SDL2_IMAGE_LIBRARIES}"
 )
