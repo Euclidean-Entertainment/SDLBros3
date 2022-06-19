@@ -71,6 +71,7 @@ long File::read(void* destination, long length)
 
     auto number_of_bytes_to_read = std::min(length, m_file_size - m_fpos);
     memcpy(destination, &m_data.data()[m_fpos], static_cast<size_t>(number_of_bytes_to_read));
+    m_fpos += number_of_bytes_to_read;
 
     return number_of_bytes_to_read;
 }
