@@ -20,6 +20,7 @@ enum class TimerType : int
 class Timer
 {
 public:
+    Timer(unsigned int intervalInTicks, TimerType type = TimerType::ONE_SHOT);
     Timer(std::function<void()> callback, unsigned int intervalInTicks, TimerType type);
 
     void set_callback(std::function<void()> callback);

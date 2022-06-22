@@ -2,6 +2,10 @@
 
 using namespace Engine;
 
+Timer::Timer(unsigned int intervalInTicks, TimerType type) : Timer(nullptr, intervalInTicks, type)
+{
+}
+
 Timer::Timer(std::function<void()> callback, unsigned int interval, TimerType type) :
     m_callback(callback),
     m_interval(interval),
