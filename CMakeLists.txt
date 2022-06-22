@@ -26,6 +26,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHE
         "-Wfloat-equal"
         "-Wunreachable-code"
         "-Wswitch-enum"
+        "-Wno-gnu-zero-variadic-macro-arguments"
     )
     string(REPLACE ";" " " CXX_FLAGS "${CXX_FLAGS}")
     set(CXX_FLAGS "${CXX_FLAGS}" CACHE INTERNAL "Additional compiler flags to use.")
