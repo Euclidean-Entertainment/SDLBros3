@@ -24,7 +24,6 @@ public:
 public:
     Animation() = default;
     Animation(uint32_t frames_per_tick);
-    ~Animation() = default;
 
     void set_ticks_per_frame(uint32_t ticks_per_frame) { m_ticks_per_frame = ticks_per_frame; }
     void add_frame(Frame const& frame);
