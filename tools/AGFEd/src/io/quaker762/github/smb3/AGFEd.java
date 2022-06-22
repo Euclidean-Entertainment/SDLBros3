@@ -25,6 +25,7 @@ public class AGFEd extends JFrame implements ActionListener {
 	private Animation currentAnimation;
 	
 	private JMenuItem loadSheetItem;
+	private JMenuItem saveAnimationItem;
 	private JList<String> animationList;
 	private JList<String> frameList;
 	
@@ -37,6 +38,7 @@ public class AGFEd extends JFrame implements ActionListener {
 	public AGFEd()
 	{
 	    super("AGFEd");
+	    setTitle("AGFEd");
 
 	    currentAnimation = null;
 	    
@@ -119,9 +121,28 @@ public class AGFEd extends JFrame implements ActionListener {
                     
                     JPopupMenu menu = new JPopupMenu("Animation");
                     JMenuItem parametersItem = new JMenuItem("Animation Parameters");
+                    JMenuItem removeAnimationItem = new JMenuItem("Delete");
                     menu.add(parametersItem);
+                    menu.add(removeAnimationItem);
                     menu.setLocation(e.getX(), e.getY());
                     menu.show(animationList, e.getX(), e.getY());
+                    
+                    removeAnimationItem.addActionListener(new ActionListener()
+                    {
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            int selectedIndex = animationList.getSelectedIndex();
+                            if (selectedIndex >= 0)
+                            {
+                                animations.remove(selectedIndex);
+                                animationListModel.clear();
+                                for (int i = 0; i < animations.size(); i++)
+                                {
+                                    animationListModel.addElement("Animation " + i);
+                                }
+                            }
+                        }
+                    });
                     
                     parametersItem.addActionListener(new ActionListener() 
                     {
@@ -306,9 +327,13 @@ public class AGFEd extends JFrame implements ActionListener {
 	    loadSheetItem = new JMenuItem("Load Sheet");
 	    loadSheetItem.addActionListener(this);
 	    
+	    saveAnimationItem = new JMenuItem("Save");
+	    saveAnimationItem.addActionListener(this);
+	    
 	    JMenuBar menuBar = new JMenuBar();
 	    menuBar.add(fileMenu);
 	    fileMenu.add(loadSheetItem);
+	    fileMenu.add(saveAnimationItem);
 	    
 	    return menuBar;
 	}
@@ -379,6 +404,35 @@ public class AGFEd extends JFrame implements ActionListener {
 	        animationListModel.addElement("Animation " + (animations.size() - 1));
 	        
 	        animationList.setSelectedIndex(animations.size() - 1);
+	    }
+	    else if (e.getSource() == saveAnimationItem)
+	    {
+	        try
+            {
+	            JFileChooser fileChooser = new JFileChooser();
+	            fileChooser.setDialogTitle("Save AGF");
+	            fileChooser.setCurrentDirectory(new File("./"));
+	            int selection = fileChooser.showSaveDialog(sheetViewer);
+	            
+	            if (selection == JFileChooser.APPROVE_OPTION)
+	            {
+	                File chosenFile = fileChooser.getSelectedFile();
+	                if (!chosenFile.getAbsolutePath().endsWith(AGFExport.AGF_FILE_EXTENSION))
+	                {
+	                    chosenFile = new File(fileChooser.getSelectedFile() + AGFExport.AGF_FILE_EXTENSION);
+	                }
+	                
+	                AGFExport.saveAGF(animations, chosenFile);
+	            }
+            } 
+	        catch (FileNotFoundException e1)
+            {
+                e1.printStackTrace();
+            } 
+	        catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
 	    }
 	}
 }

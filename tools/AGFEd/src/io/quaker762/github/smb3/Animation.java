@@ -47,9 +47,9 @@ public class Animation extends Object
         frames.add(frame);
     }
     
-    public int frameCount()
+    public byte frameCount()
     {
-        return frames.size();
+        return (byte)frames.size();
     }
     
     public void removeFrameAt(int frame)
