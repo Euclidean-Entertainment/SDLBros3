@@ -34,7 +34,7 @@ class AnimationGroup final
         uint8_t frame_length;
     };
 
-    struct agf_animation_data
+    struct [[gnu::packed]] agf_animation_data
     {
         uint16_t    sheet_x;
         uint16_t    sheet_y;
