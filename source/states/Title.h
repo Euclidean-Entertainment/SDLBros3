@@ -6,8 +6,10 @@
 
 #pragma once
 
+#include <memory.h>
 #include <engine/Game.h>
 #include <engine/State.h>
+#include <engine/Timer.h>
 #include <gfx/BackgroundImage.h>
 
 namespace States {
@@ -25,12 +27,14 @@ public:
 
 private:
     void init_resources();
+    void init_animations();
 
 private:
     BackgroundImage m_floor;
     BackgroundImage m_curtain;
-    uint32_t m_ticks { 0 };
 
+    std::unique_ptr<Timer> m_curtain_timer { nullptr };
+    bool m_curtain_up { false };
 };
 
 };
