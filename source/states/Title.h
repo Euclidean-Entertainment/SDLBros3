@@ -34,7 +34,6 @@ private:
     BackgroundImage m_curtain;
 
     std::unique_ptr<Timer> m_curtain_timer { nullptr };
-    bool m_curtain_up { false };
 };
 
 };

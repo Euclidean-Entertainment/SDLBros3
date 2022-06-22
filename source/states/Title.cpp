@@ -25,13 +25,8 @@ void TitleState::init_resources()
 
 void TitleState::init_animations() 
 {
-    // Create a timer for the curtain animation to begin.
-    const auto& toggle_curtain_up = [this]() {
-        m_curtain_up = !m_curtain_up;
-    };
-    m_curtain_timer = std::make_unique<Timer>(
-        Timer(toggle_curtain_up, 70, TimerType::ONE_SHOT)
-    );
+    // Create a timer for the curtain animation to begin after 70 ticks.
+    m_curtain_timer = std::make_unique<Timer>(Timer(70, TimerType::ONE_SHOT));
     m_curtain_timer->start();
 }
 
@@ -42,16 +37,13 @@ void TitleState::handle_input(SDL_Event const&)
 
 void TitleState::update()
 {
-    if (!m_curtain_up)
+    // Curtain up animation.
+    m_curtain_timer->tick();
+    if (m_curtain_timer->is_running())
     {
-        m_curtain_timer->tick();
         return;
     }
-    else 
-    {
-        m_curtain.set_y(m_curtain.y() - 2);
-    }
-
+    m_curtain.set_y(m_curtain.y() - 2);
 }
 
 void TitleState::render()
