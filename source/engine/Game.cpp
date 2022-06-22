@@ -101,7 +101,9 @@ void Game::handle_input()
 
 void Game::update()
 {
-    m_states.top()->update();
+    auto current = m_states.top();
+    current->tick_timers();
+    current->update();
 }
 
 void Game::render()

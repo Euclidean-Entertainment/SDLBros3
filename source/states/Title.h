@@ -6,7 +6,6 @@
 
 #pragma once
 
-#include <memory.h>
 #include <engine/Game.h>
 #include <engine/State.h>
 #include <engine/Timer.h>
@@ -33,7 +32,7 @@ private:
     BackgroundImage m_floor;
     BackgroundImage m_curtain;
 
-    std::unique_ptr<Timer> m_curtain_timer { nullptr };
+    Timer* m_curtain_timer { nullptr };
 };
 
 };
