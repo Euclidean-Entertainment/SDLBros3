@@ -6,8 +6,11 @@
 
 #pragma once
 
+#include <memory>
+#include <vector>
 #include <SDL2/SDL.h>
-#include "gfx/FontRenderer.h"
+#include <engine/Timer.h>
+#include <gfx/FontRenderer.h>
 
 namespace Engine {
 
@@ -21,13 +24,18 @@ public:
     virtual ~State() {}
 
     virtual void handle_input(SDL_Event const& event) = 0;
+    virtual void tick_timers();
     virtual void update() = 0;
     virtual void render() = 0;
+
+    Timer* create_timer(unsigned int ticks, TimerType type = TimerType::ONE_SHOT);
+    Timer* create_timer(std::function<void()> callback, unsigned int ticks, TimerType type = TimerType::ONE_SHOT);
 
 protected:
     Game& m_game;
     SDL_Renderer* m_renderer;
     GFX::FontRenderer m_font_renderer;
+    std::vector<std::unique_ptr<Timer>> m_timers;
 };
 
 };
