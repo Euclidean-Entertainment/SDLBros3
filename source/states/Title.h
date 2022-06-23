@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2022, Jesse Buhagiar <jooster669@gmail.com>
+ * Copyright (c) 2022, Jesse Buhagiar <jooster669@gmail.com>, Zac Brannelly <zac.brannelly@gmail.com>
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
 #pragma once
 
+#include <memory>
 #include <engine/Game.h>
 #include <engine/State.h>
 #include <engine/Timer.h>
@@ -32,7 +33,7 @@ private:
     BackgroundImage m_floor;
     BackgroundImage m_curtain;
 
-    Timer* m_curtain_timer { nullptr };
+    std::shared_ptr<Timer> m_curtain_timer { nullptr };
 };
 
 };
