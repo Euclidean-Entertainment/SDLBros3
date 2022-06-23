@@ -11,7 +11,7 @@
 namespace Engine
 {
 
-enum class TimerType : int
+enum TimerType
 {
     ONE_SHOT,
     REPEAT
