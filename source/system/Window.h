@@ -19,10 +19,10 @@ class Window
     static constexpr unsigned DEFAULT_HEIGHT = 480;
 
 public:
-    static std::unique_ptr<Window> try_create(int width, int height, const std::string& title);
+    static std::unique_ptr<Window> try_create(int width, int height, std::string const& title);
 
     Window() = delete;
-    Window(int width, int height, const std::string& title);
+    Window(int width, int height, std::string const& title);
     ~Window();
 
     bool create();
@@ -47,7 +47,6 @@ private:
     std::unique_ptr<Renderer> m_renderer { nullptr };
 };
 
-
-}
+} // namespace System
 
 using System::Window;

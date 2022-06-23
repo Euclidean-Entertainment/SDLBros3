@@ -4,9 +4,9 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#include <SDL2/SDL_image.h>
 #include <gfx/Texture.h>
 #include <system/Log.h>
-#include <SDL2/SDL_image.h>
 
 namespace GFX {
 
@@ -41,13 +41,13 @@ bool Texture::load(SDL_Renderer* renderer, std::string const& path, std::string 
 
 Texture& Texture::operator=(Texture&& rhs)
 {
-    m_name      = std::move(rhs.m_name);
-    m_loaded    = std::exchange(rhs.m_loaded, false);
-    m_width     = std::exchange(rhs.m_width, 0);
-    m_height    = std::exchange(rhs.m_height, 0);
-    m_texture   = std::move(rhs.m_texture);
+    m_name = std::move(rhs.m_name);
+    m_loaded = std::exchange(rhs.m_loaded, false);
+    m_width = std::exchange(rhs.m_width, 0);
+    m_height = std::exchange(rhs.m_height, 0);
+    m_texture = std::move(rhs.m_texture);
 
     return *this;
 }
 
-};
+}; // namespace GFX

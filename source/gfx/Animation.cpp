@@ -10,9 +10,8 @@
 namespace GFX {
 
 Animation::Animation(uint32_t ticks_per_frame)
-    : m_ticks_per_frame(ticks_per_frame)
+: m_ticks_per_frame(ticks_per_frame)
 {
-
 }
 
 Animation::Frame const& Animation::next_frame() const
@@ -37,4 +36,4 @@ Animation::Frame const& Animation::frame(size_t frame) const
     return m_frames.at(frame);
 }
 
-};
+}; // namespace GFX

@@ -9,14 +9,13 @@
 #include <gfx/SpriteSheet.h>
 #include <math/Vec2.h>
 
-namespace Entity
-{
+namespace Entity {
 
 class Entity
 {
 public:
     Entity() = default;
-    virtual ~Entity(){}
+    virtual ~Entity() {}
 
     virtual void update() = 0;
     virtual void render() = 0;
@@ -31,6 +30,6 @@ protected:
     FloatVector2 m_velocity;
 };
 
-};
+}; // namespace Entity
 
 using Entity::Entity;

@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <NonCopy.h>
 #include <engine/ResourceLoader.h>
 #include <gfx/Texture.h>
-#include <NonCopy.h>
 
 namespace GFX {
 
@@ -16,6 +16,7 @@ class BackgroundImage
 {
     MAKE_NONCOPYABLE(BackgroundImage)
     MAKE_NONMOVABLE(BackgroundImage)
+
 public:
     BackgroundImage() = default;
     ~BackgroundImage() = default;
@@ -37,6 +38,6 @@ private:
     Texture m_texture;
 };
 
-};
+}; // namespace GFX
 
 using GFX::BackgroundImage;

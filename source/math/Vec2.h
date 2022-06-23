@@ -6,20 +6,23 @@
 
 #pragma once
 
-#include <cstdint>
 #include <cmath>
+#include <cstdint>
 #include <utility>
 
 namespace Math {
 
-template <typename T>
+template<typename T>
 class Vec2
 {
 public:
     Vec2() = default;
-    Vec2(T x, T y) : m_x(x), m_y(y){}
-    Vec2(Vec2 const& rhs) : m_x(rhs.m_x), m_y(rhs.m_y){}
-    Vec2(Vec2&& rhs) : m_x(std::exchange(rhs.m_x, 0)), m_y(std::exchange(rhs.m_y, 0)) {}
+    Vec2(T x, T y)
+    : m_x(x), m_y(y) {}
+    Vec2(Vec2 const& rhs)
+    : m_x(rhs.m_x), m_y(rhs.m_y) {}
+    Vec2(Vec2&& rhs)
+    : m_x(std::exchange(rhs.m_x, 0)), m_y(std::exchange(rhs.m_y, 0)) {}
 
     Vec2 operator=(Vec2 const& rhs)
     {
@@ -135,9 +138,7 @@ private:
     T m_y;
 };
 
-};
-
+}; // namespace Math
 
 using FloatVector2 = Math::Vec2<float>;
 using IntVector2 = Math::Vec2<int32_t>;
-

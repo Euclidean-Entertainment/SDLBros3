@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include <engine/ResourceLoader.h>
 #include <engine/Game.h>
+#include <engine/ResourceLoader.h>
 #include <system/Log.h>
 
 namespace Engine {
@@ -24,4 +24,4 @@ GFX::Texture ResourceLoader::load(std::string const& path, std::string const& na
     return texture;
 }
 
-};
+}; // namespace Engine

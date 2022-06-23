@@ -9,10 +9,9 @@
 namespace GFX {
 
 SpriteSheet::SpriteSheet(uint8_t xsize, uint8_t ysize)
-    : m_xsize(xsize),
-      m_ysize(ysize)
+: m_xsize(xsize),
+  m_ysize(ysize)
 {
-
 }
 
 bool SpriteSheet::load(ResourceLoader& loader, std::string const& path, std::string const& name)
@@ -41,4 +40,4 @@ void SpriteSheet::draw(SDL_Renderer* renderer, unsigned x, unsigned y, unsigned 
     (void)SDL_RenderCopy(renderer, m_texture.texture(), &sheet_rect, &dest_rect);
 }
 
-};
+}; // namespace GFX

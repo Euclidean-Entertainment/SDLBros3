@@ -1,0 +1,81 @@
+AccessModifierOffset: '-4'
+AlignEscapedNewlines: Left
+AlignTrailingComments: 'true'
+AllowAllArgumentsOnNextLine: 'false'
+AllowAllConstructorInitializersOnNextLine: 'true'
+AllowAllParametersOfDeclarationOnNextLine: 'false'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: None
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakAfterReturnType: None
+AlwaysBreakTemplateDeclarations: 'Yes'
+BinPackArguments: 'true'
+BinPackParameters: 'true'
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterCaseLabel: 'true'
+    AfterClass: 'true'
+    AfterControlStatement: Always
+    AfterEnum: 'true'
+    AfterFunction: 'true'
+    AfterStruct: 'true'
+    AfterUnion: 'true'
+    AfterExternBlock: 'false'
+    BeforeElse: 'true'
+    BeforeLambdaBody: 'false'
+    BeforeWhile: 'false'
+    IndentBraces: 'false'
+    SplitEmptyFunction: 'true'
+    SplitEmptyNamespace: 'true'
+
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: 'true'
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: BeforeColon
+BreakStringLiterals: 'false'
+CompactNamespaces: 'true'
+ColumnLimit: '0'
+ConstructorInitializerIndentWidth: '0'
+ContinuationIndentWidth: '0'
+Cpp11BracedListStyle: 'false'
+EmptyLineBeforeAccessModifier: Always
+IncludeBlocks: Regroup
+IncludeBlocks: Regroup
+IndentCaseLabels: 'false'
+IndentCaseBlocks: 'false'
+IndentPPDirectives: BeforeHash
+IndentWidth: '4'
+IndentAccessModifiers: 'false'
+IndentWrappedFunctionNames: 'true'
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+PointerAlignment: Left
+QualifierAlignment: Right
+ReferenceAlignment: Left
+ReflowComments: 'true'
+SeparateDefinitionBlocks: Leave
+SortUsingDeclarations: 'true'
+SpaceAfterCStyleCast: 'false'
+SortIncludes: 'true'
+SortUsingDeclarations: 'true'
+SpaceAfterCStyleCast: 'false'
+SpaceAfterTemplateKeyword: 'false'
+SpaceAfterLogicalNot: 'false'
+SpaceBeforeCpp11BracedList: 'true'
+SpaceBeforeCtorInitializerColon: 'false'
+SpaceBeforeInheritanceColon: 'true'
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: 'false'
+SpacesInAngles: 'false'
+SpacesInCStyleCastParentheses: 'false'
+SpacesInContainerLiterals: 'false'
+SpacesInParentheses: 'false'
+SpacesInSquareBrackets: 'false'
+Standard: c++20
+UseTab: Never
+
+...
+

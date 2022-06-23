@@ -6,9 +6,9 @@
 
 #pragma once
 
-#include <cstdint>
 #include <NonCopy.h>
-#include <iostream>     // Required for `std::ios_base`
+#include <cstdint>
+#include <iostream> // Required for `std::ios_base`
 #include <string>
 #include <vector>
 
@@ -22,9 +22,9 @@ class File final
     using size_type = std::vector<uint8_t>::size_type;
 
 public:
-
     File() = default;
-    explicit File(std::string const& filepath) { m_path = filepath; open(filepath); }
+    explicit File(std::string const& filepath);
+
     ~File() = default;
 
     void rewind() { m_fpos = 0; }
@@ -40,11 +40,10 @@ private:
     long m_file_size { 0 };
     std::string m_path;
     bool m_open { false };
-
     std::vector<uint8_t> m_data;
 };
 
-};
+}; // namespace System
 
 using DiskFile = System::File;
 using System::File;

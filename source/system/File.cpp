@@ -4,14 +4,20 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#include <Assertions.h>
 #include <algorithm>
+#include <cstring>
+#include <fstream>
 #include <system/File.h>
 #include <system/Log.h>
-#include <fstream>
-#include <Assertions.h>
-#include <cstring>
 
 namespace System {
+
+File::File(std::string const& filepath)
+{
+    m_path = filepath;
+    open(filepath);
+}
 
 void File::seek(long position, std::ios_base::seekdir origin)
 {
@@ -52,8 +58,8 @@ bool File::open(std::string const& filepath)
     }
 
     m_file_size = file_stream.tellg();
-    file_stream.seekg(0, std::ios_base::beg);                   // Seek back to beginning of the file
-    m_data.reserve(static_cast<unsigned long>(m_file_size));    // FIXME: Why the fuck does this require a cast when `m_file_size` is std::vector<T>::size_type??
+    file_stream.seekg(0, std::ios_base::beg);                // Seek back to beginning of the file
+    m_data.reserve(static_cast<unsigned long>(m_file_size)); // FIXME: Why the fuck does this require a cast when `m_file_size` is std::vector<T>::size_type??
     (void)file_stream.read(reinterpret_cast<char*>(&m_data.data()[0]), m_file_size);
     m_open = true;
 
@@ -63,9 +69,7 @@ bool File::open(std::string const& filepath)
 long File::read(void* destination, long length)
 {
     if (length > m_file_size)
-    {
         log(LogLevel::WARN, "Attempted to read too many bytes from %s (m_fpos: %ld m_file_size: %ld length: %ld)", m_path.c_str(), m_fpos, m_file_size, length);
-    }
 
     ASSERT(m_fpos <= m_file_size);
 
@@ -76,4 +80,4 @@ long File::read(void* destination, long length)
     return number_of_bytes_to_read;
 }
 
-};
+}; // namespace System

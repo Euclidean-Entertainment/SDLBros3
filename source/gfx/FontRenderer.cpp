@@ -4,22 +4,21 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include <gfx/FontRenderer.h>
-#include <system/Log.h>
 #include <SDL2/SDL.h>
 #include <algorithm>
+#include <gfx/FontRenderer.h>
+#include <system/Log.h>
 
 namespace GFX {
 
 // Font sprite sheet x-index Look Up Table
-static const int character_index_lut[59] =
-{
-    0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,        // 0x20-0x2F
-    2,3,4,5,6,7,8,9,10,11,                  // 0x30-0x39
-    0,0,0,0,0,0,0,                          // 0x3A-0x41
-    12,13,14,15,16,17,18,19,20,21,22,
-    23,24,25,26,27,28,29,30,31,32,33,
-    34,35,36
+static int const character_index_lut[59] = {
+    0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 0x20-0x2F
+    2, 3, 4, 5, 6, 7, 8, 9, 10, 11,                 // 0x30-0x39
+    0, 0, 0, 0, 0, 0, 0,                            // 0x3A-0x41
+    12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+    23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+    34, 35, 36
 };
 
 FontRenderer::FontRenderer(ResourceLoader& loader)
@@ -68,4 +67,4 @@ void FontRenderer::draw_string(SDL_Renderer* renderer, int x, int y, std::string
     SDL_RenderCopy(renderer, string_texture, &from_rect, &to_rect);
 }
 
-};
+}; // namespace GFX

@@ -13,7 +13,6 @@ namespace GFX {
 static constexpr bool AGF_DEBUG = true;
 static constexpr bool AGF_DEBUG_VERBOSE = true;
 
-
 bool AnimationGroup::load(std::string const& path)
 {
     DiskFile agf_file;
@@ -91,4 +90,4 @@ bool AnimationGroup::load(std::string const& path)
     return true;
 }
 
-};
+}; // namespace GFX

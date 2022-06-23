@@ -4,13 +4,13 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include <system/Window.h>
 #include <cstdio>
 #include <system/Log.h>
+#include <system/Window.h>
 
 namespace System {
 
-std::unique_ptr<Window> Window::try_create(int width, int height, const std::string& title)
+std::unique_ptr<Window> Window::try_create(int width, int height, std::string const& title)
 {
     auto window = std::unique_ptr<Window>(new Window(width, height, title));
     if (!window)
@@ -30,19 +30,16 @@ std::unique_ptr<Window> Window::try_create(int width, int height, const std::str
 }
 
 Window::Window(int width, int height, std::string const& title)
-    : m_width(width),
-      m_height(height),
-      m_title(title)
+: m_width(width),
+  m_height(height),
+  m_title(title)
 {
-
 }
 
 Window::~Window()
 {
     if (m_hwnd != nullptr)
-    {
         SDL_DestroyWindow(m_hwnd);
-    }
 }
 
 bool Window::create()
@@ -59,9 +56,7 @@ bool Window::create()
     // Create and attach renderer to this window
     m_renderer = std::unique_ptr<Renderer>(new Renderer(this));
     if (m_renderer == nullptr)
-    {
         return false;
-    }
 
     return true;
 }
@@ -86,4 +81,4 @@ void Window::present() const
     m_renderer->present();
 }
 
-}
+} // namespace System

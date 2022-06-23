@@ -15,6 +15,7 @@ class Window;
 class Renderer
 {
     friend class Window;
+
 public:
     Renderer() = delete;
     Renderer(Window const* const hwnd);
@@ -33,4 +34,4 @@ private:
     SDL_Renderer* m_renderer { nullptr };
 };
 
-};
+}; // namespace System

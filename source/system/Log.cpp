@@ -8,53 +8,52 @@
 #include <cstdio>
 #include <system/Log.h>
 
-namespace System
-{
+namespace System {
 
 static constexpr bool USE_COLORED_LOGGING = true;
 
-void log(LogLevel level, const char* str, ...)
+void log(LogLevel level, char const* str, ...)
 {
     std::va_list args;
 
-    const char* label = "";
+    char const* label = "";
     switch (level)
     {
-        case LogLevel::INFO:
-        {
-            if constexpr (USE_COLORED_LOGGING)
-                label = "\033[96;1;1m[info]\033[0m ";
-            else
-                label = "[info] ";
-            break;
-        }
+    case LogLevel::INFO:
+    {
+        if constexpr (USE_COLORED_LOGGING)
+            label = "\033[96;1;1m[info]\033[0m ";
+        else
+            label = "[info] ";
+        break;
+    }
 
-        case LogLevel::WARN:
-        {
-            if constexpr (USE_COLORED_LOGGING)
-                label = "\033[93;1;1m[warn]\033[0m ";
-            else
-                label = "[warn] ";
-            break;
-        }
+    case LogLevel::WARN:
+    {
+        if constexpr (USE_COLORED_LOGGING)
+            label = "\033[93;1;1m[warn]\033[0m ";
+        else
+            label = "[warn] ";
+        break;
+    }
 
-        case LogLevel::CRIT:
-        {
-            if constexpr (USE_COLORED_LOGGING)
-                label = "\033[91;1;1m[crit]\033[0m ";
-            else
-                label = "[crit] ";
-            break;
-        }
+    case LogLevel::CRIT:
+    {
+        if constexpr (USE_COLORED_LOGGING)
+            label = "\033[91;1;1m[crit]\033[0m ";
+        else
+            label = "[crit] ";
+        break;
+    }
 
-        case LogLevel::FATAL:
-        {
-            if constexpr (USE_COLORED_LOGGING)
-                label = "\033[91;5;1m[fatal]\033[0m ";
-            else
-                label = "[fatal]";
-            break;
-        }
+    case LogLevel::FATAL:
+    {
+        if constexpr (USE_COLORED_LOGGING)
+            label = "\033[91;5;1m[fatal]\033[0m ";
+        else
+            label = "[fatal]";
+        break;
+    }
     }
 
     va_start(args, str);
@@ -71,4 +70,4 @@ void log(LogLevel level, const char* str, ...)
     va_end(args);
 }
 
-}
+} // namespace System

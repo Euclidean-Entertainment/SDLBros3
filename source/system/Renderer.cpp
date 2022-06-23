@@ -9,7 +9,6 @@
 
 namespace System {
 
-
 Renderer::Renderer(Window const* const hwnd)
 {
     m_renderer = SDL_CreateRenderer(const_cast<SDL_Window*>(hwnd->hwnd()), -1, SDL_RENDERER_ACCELERATED);
@@ -18,9 +17,7 @@ Renderer::Renderer(Window const* const hwnd)
 Renderer::~Renderer()
 {
     if (m_renderer)
-    {
         SDL_DestroyRenderer(m_renderer);
-    }
 }
 
-}
+} // namespace System

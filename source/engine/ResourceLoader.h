@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include <gfx/Texture.h>
 #include <NonCopy.h>
+#include <gfx/Texture.h>
 
 namespace Engine {
 
@@ -19,19 +19,23 @@ class ResourceLoader final
 
 public:
     ResourceLoader() = delete;
-    ResourceLoader(Game& game) : m_game(game){}
+    ResourceLoader(Game& game)
+    : m_game(game) {}
     ~ResourceLoader() = default;
 
-    template <typename T>
-    T load(std::string const& path) { return load<T>(path, "default"); }
+    template<typename T>
+    T load(std::string const& path)
+    {
+        return load<T>(path, "default");
+    }
 
-    template <typename T>
+    template<typename T>
     T load(std::string const& path, std::string const& name);
 
 private:
     Game& m_game;
 };
 
-};
+}; // namespace Engine
 
 using Engine::ResourceLoader;

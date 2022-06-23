@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <cstdint>
 #include <engine/ResourceLoader.h>
 #include <gfx/Texture.h>
-#include <cstdint>
 
 namespace GFX {
 
@@ -31,7 +31,7 @@ public:
 private:
     uint8_t m_xsize { 0u };
     uint8_t m_ysize { 0u };
-    Texture m_texture;  // Texture that holds this spritesheet
+    Texture m_texture; // Texture that holds this spritesheet
 };
 
-};
+}; // namespace GFX

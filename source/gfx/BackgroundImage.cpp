@@ -7,7 +7,6 @@
 #include <gfx/BackgroundImage.h>
 #include <system/Log.h>
 
-
 namespace GFX {
 
 bool BackgroundImage::load(Engine::ResourceLoader& loader, std::string const& path, std::string const& name)
@@ -27,4 +26,4 @@ void BackgroundImage::draw(SDL_Renderer* renderer)
     SDL_RenderCopy(renderer, m_texture.texture(), NULL, &draw_rect);
 }
 
-};
+}; // namespace GFX

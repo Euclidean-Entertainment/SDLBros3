@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include <vector>
 #include <SDL2/SDL.h>
+#include <vector>
 
 namespace GFX {
 
@@ -16,8 +16,9 @@ class Animation
 public:
     struct Frame
     {
-        explicit Frame(int x, int y, int w, int h) : sheet_rect({x, y, w, h}){}
-        SDL_Rect sheet_rect{};
+        explicit Frame(int x, int y, int w, int h)
+        : sheet_rect({ x, y, w, h }) {}
+        SDL_Rect sheet_rect {};
     };
 
 public:
@@ -41,4 +42,4 @@ private:
     std::vector<Frame> m_frames;
 };
 
-}
+} // namespace GFX

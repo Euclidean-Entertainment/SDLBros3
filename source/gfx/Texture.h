@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
-#include <string>
-#include <memory>
 #include <NonCopy.h>
+#include <SDL2/SDL.h>
+#include <memory>
+#include <string>
 #include <utility>
 
 namespace GFX {
@@ -30,13 +30,12 @@ public:
     ~Texture() = default;
 
     Texture(Texture&& rhs)
-        : m_name(std::move(rhs.m_name)),
-          m_loaded(std::exchange(rhs.m_loaded, false)),
-          m_width(std::exchange(rhs.m_width, 0)),
-          m_height(std::exchange(rhs.m_height, 0)),
-          m_texture(std::move(rhs.m_texture))
+    : m_name(std::move(rhs.m_name)),
+      m_loaded(std::exchange(rhs.m_loaded, false)),
+      m_width(std::exchange(rhs.m_width, 0)),
+      m_height(std::exchange(rhs.m_height, 0)),
+      m_texture(std::move(rhs.m_texture))
     {
-
     }
 
     bool load(SDL_Renderer* renderer, std::string const& path) { return load(renderer, path, "default"); }
@@ -59,4 +58,4 @@ private:
     std::unique_ptr<SDL_Texture, Deleter> m_texture { nullptr };
 };
 
-};
+}; // namespace GFX

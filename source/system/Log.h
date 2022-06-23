@@ -8,8 +8,7 @@
 
 #include <cstdarg>
 
-namespace System
-{
+namespace System {
 
 enum class LogLevel : int
 {
@@ -19,16 +18,16 @@ enum class LogLevel : int
     FATAL
 };
 
-[[gnu::format(printf, 2, 3)]] void log(LogLevel component, const char* str, ...);
+[[gnu::format(printf, 2, 3)]] void log(LogLevel component, char const* str, ...);
 
-}
+} // namespace System
 
 // Thanks Serenity :^)
-#define log_if(flag, level, fmt, ...)                   \
-    do                                                  \
-    {                                                   \
-        if constexpr (flag)                             \
-            System::log(level, fmt, ##__VA_ARGS__);     \
+#define log_if(flag, level, fmt, ...)               \
+    do                                              \
+    {                                               \
+        if constexpr (flag)                         \
+            System::log(level, fmt, ##__VA_ARGS__); \
     } while (0)
 
 using System::LogLevel;

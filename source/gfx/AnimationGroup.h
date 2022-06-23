@@ -14,17 +14,17 @@ namespace GFX {
 
 class AnimationGroup final
 {
-    static constexpr const char* ANIMATION_GROUP_FILE_EXT = ".agf";
-    static constexpr const char* ANIMATION_GROUP_HEADER_MAGIC = "SMB3ANM\0";
-    static constexpr const char* ANIMATION_GROUP_ANIMATION_MAGIC = "ADH\0";
+    static constexpr char const* ANIMATION_GROUP_FILE_EXT = ".agf";
+    static constexpr char const* ANIMATION_GROUP_HEADER_MAGIC = "SMB3ANM\0";
+    static constexpr char const* ANIMATION_GROUP_ANIMATION_MAGIC = "ADH\0";
 
     struct [[gnu::packed]] agf_file_header
     {
-        char        magic[8];
-        uint16_t    animation_count;
-        uint8_t     version_major;
-        uint8_t     version_minor;
-        uint8_t     reserved[4];
+        char magic[8];
+        uint16_t animation_count;
+        uint8_t version_major;
+        uint8_t version_minor;
+        uint8_t reserved[4];
     };
 
     struct [[gnu::packed]] agf_animation_header
@@ -36,10 +36,10 @@ class AnimationGroup final
 
     struct [[gnu::packed]] agf_animation_data
     {
-        uint16_t    sheet_x;
-        uint16_t    sheet_y;
-        uint8_t     sprite_width;
-        uint8_t     sprite_height;
+        uint16_t sheet_x;
+        uint16_t sheet_y;
+        uint8_t sprite_width;
+        uint8_t sprite_height;
     };
 
 public:
@@ -52,4 +52,4 @@ private:
     std::vector<Animation> m_animations;
 };
 
-};
+}; // namespace GFX
