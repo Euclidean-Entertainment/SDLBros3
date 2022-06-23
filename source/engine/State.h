@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2022, Jesse Buhagiar <jooster669@gmail.com>
+ * Copyright (c) 2022
+ * Jesse Buhagiar <jooster669@gmail.com>, Zac Brannelly <zac.brannelly@gmail.com>
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
@@ -28,14 +29,14 @@ public:
     virtual void update() = 0;
     virtual void render() = 0;
 
-    Timer* create_timer(unsigned int ticks, TimerType type = TimerType::ONE_SHOT);
-    Timer* create_timer(std::function<void()> callback, unsigned int ticks, TimerType type = TimerType::ONE_SHOT);
+    std::shared_ptr<Timer> create_timer(uint32_t ticks, TimerType type = TimerType::ONE_SHOT);
+    std::shared_ptr<Timer> create_timer(std::function<void()> callback, uint32_t ticks, TimerType type = TimerType::ONE_SHOT);
 
 protected:
     Game& m_game;
     SDL_Renderer* m_renderer;
     GFX::FontRenderer m_font_renderer;
-    std::vector<std::unique_ptr<Timer>> m_timers;
+    std::vector<std::shared_ptr<Timer>> m_timers;
 };
 
 };
