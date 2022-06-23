@@ -82,10 +82,10 @@ public:
 
 private:
     std::function<void()> m_callback;
-    unsigned int m_interval { 60 };
+    uint32_t m_interval { 60 };
     TimerType m_type { TimerType::ONE_SHOT };
 
-    unsigned int m_ticks { 0 };
+    uint32_t m_ticks { 0 };
     bool m_running { false };
 };
 

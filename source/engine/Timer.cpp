@@ -8,11 +8,11 @@
 
 using namespace Engine;
 
-Timer::Timer(unsigned int intervalInTicks, TimerType type) : Timer(nullptr, intervalInTicks, type)
+Timer::Timer(uint32_t intervalInTicks, TimerType type) : Timer(nullptr, intervalInTicks, type)
 {
 }
 
-Timer::Timer(std::function<void()> callback, unsigned int interval, TimerType type) :
+Timer::Timer(std::function<void()> callback, uint32_t interval, TimerType type) :
     m_callback(callback),
     m_interval(interval),
     m_type(type)
