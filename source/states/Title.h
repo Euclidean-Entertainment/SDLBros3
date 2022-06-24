@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <memory>
 #include <engine/Game.h>
 #include <engine/State.h>
 #include <engine/Timer.h>
 #include <gfx/BackgroundImage.h>
+#include <memory>
 
 namespace States {
 
@@ -18,7 +18,7 @@ class TitleState : public Engine::State
 {
 public:
     TitleState(Engine::Game& game, SDL_Renderer* renderer);
-    virtual ~TitleState() override{}
+    virtual ~TitleState() override {}
 
     // ^State
     virtual void handle_input(SDL_Event const& event) override;
@@ -36,4 +36,4 @@ private:
     std::shared_ptr<Timer> m_curtain_timer { nullptr };
 };
 
-};
+}; // namespace States

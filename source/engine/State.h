@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include <memory>
-#include <vector>
 #include <SDL2/SDL.h>
 #include <engine/Timer.h>
 #include <gfx/FontRenderer.h>
+#include <memory>
+#include <vector>
 
 namespace Engine {
 
@@ -39,6 +39,6 @@ protected:
     std::vector<std::shared_ptr<Timer>> m_timers;
 };
 
-};
+}; // namespace Engine
 
 using Engine::State;

@@ -8,7 +8,8 @@
 
 namespace States {
 
-TitleState::TitleState(Engine::Game& game, SDL_Renderer* renderer) : State(game, renderer)
+TitleState::TitleState(Engine::Game& game, SDL_Renderer* renderer)
+: State(game, renderer)
 {
     init_resources();
     init_animations();
@@ -23,7 +24,7 @@ void TitleState::init_resources()
     (void)m_curtain.load(m_game.resource_loader(), "./data/backgrounds/title/curtain.png", "curtain");
 }
 
-void TitleState::init_animations() 
+void TitleState::init_animations()
 {
     // Create a timer for the curtain animation to begin after 70 ticks.
     m_curtain_timer = create_timer(70, TimerType::ONE_SHOT);
@@ -32,7 +33,6 @@ void TitleState::init_animations()
 
 void TitleState::handle_input(SDL_Event const&)
 {
-
 }
 
 void TitleState::update()
@@ -51,5 +51,4 @@ void TitleState::render()
     m_curtain.draw(m_renderer);
 }
 
-
-};
+}; // namespace States

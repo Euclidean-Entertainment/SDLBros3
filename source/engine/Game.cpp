@@ -4,10 +4,10 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#include <engine/Game.h>
-#include <system/Log.h>
-#include <states/Title.h>
 #include <SDL2/SDL.h>
+#include <engine/Game.h>
+#include <states/Title.h>
+#include <system/Log.h>
 
 namespace Engine {
 
@@ -26,12 +26,10 @@ std::unique_ptr<Game> Game::try_create()
 
 Game::Game()
 {
-
 }
 
 Game::~Game()
 {
-
 }
 
 bool Game::init()
@@ -79,14 +77,13 @@ void Game::start()
 
 void Game::shutdown()
 {
-
 }
 
 void Game::handle_input()
 {
     SDL_Event event;
 
-    while(SDL_PollEvent(&event))
+    while (SDL_PollEvent(&event))
     {
         switch (event.type)
         {
@@ -116,7 +113,7 @@ void Game::loop()
     while (m_running)
     {
         m_window->clear();
-        const auto now = SDL_GetTicks();
+        auto const now = SDL_GetTicks();
 
         handle_input();
         update();
@@ -145,4 +142,4 @@ void Game::loop()
     }
 }
 
-}
+} // namespace Engine

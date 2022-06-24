@@ -6,12 +6,12 @@
 
 #pragma once
 
+#include <cstdint>
 #include <functional>
 
-namespace Engine
-{
+namespace Engine {
 
-enum TimerType
+enum class TimerType
 {
     ONE_SHOT,
     REPEAT
@@ -25,60 +25,25 @@ public:
 
     void tick();
 
-    void reset() 
-    {
-        m_ticks = 0; 
-    }
-
-    void start()
-    {
-        m_running = true;
-    }
-    void pause()
-    {
-        m_running = false;
-    }
+    void reset() { m_ticks = 0; }
+    void start() { m_running = true; }
+    void pause() { m_running = false; }
     void stop()
     {
         m_running = false;
         m_ticks = 0;
     }
 
-    void set_callback(std::function<void()> callback)
-    {
-        m_callback = callback;
-    }
-    std::function<void()> get_callback() const
-    {
-        return m_callback;
-    }
+    void set_callback(std::function<void()> callback) { m_callback = callback; }
+    void set_interval(uint32_t interval) { m_interval = interval; }
+    void set_type(TimerType type) { m_type = type; }
+    bool is_running() const { return m_running; }
 
-    void set_interval(uint32_t interval)
-    {
-        m_interval = interval;
-    }
-    uint32_t get_interval() const
-    {
-        return m_interval;
-    }
+    uint32_t get_ticks() const { return m_ticks; }
+    uint32_t get_interval() const { return m_interval; }
 
-    void set_type(TimerType type)
-    {
-        m_type = type;
-    }
-    TimerType get_type() const
-    {
-        return m_type;
-    }
-
-    bool is_running() const
-    {
-        return m_running;
-    }
-    uint32_t get_ticks() const
-    {
-        return m_ticks;
-    }
+    TimerType get_type() const { return m_type; }
+    std::function<void()> get_callback() const { return m_callback; }
 
 private:
     std::function<void()> m_callback;
@@ -89,7 +54,7 @@ private:
     bool m_running { false };
 };
 
-};
+}; // namespace Engine
 
 using Engine::Timer;
 using Engine::TimerType;

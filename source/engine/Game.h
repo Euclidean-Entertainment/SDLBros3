@@ -8,9 +8,9 @@
 
 #include <engine/ResourceLoader.h>
 #include <engine/State.h>
-#include <system/Window.h>
 #include <memory>
 #include <stack>
+#include <system/Window.h>
 
 namespace Engine {
 
@@ -19,13 +19,13 @@ class Game
 {
     friend class ResourceLoader;
 
-    static constexpr uint32_t MILLISECONDS_PER_SECOND   = 1000u;
-    static constexpr uint32_t TARGET_FRAMERATE          = 60u;
-    static constexpr uint32_t TARGET_FRAME_TIME         = MILLISECONDS_PER_SECOND / TARGET_FRAMERATE;
+    static constexpr uint32_t MILLISECONDS_PER_SECOND = 1000u;
+    static constexpr uint32_t TARGET_FRAMERATE = 60u;
+    static constexpr uint32_t TARGET_FRAME_TIME = MILLISECONDS_PER_SECOND / TARGET_FRAMERATE;
 
-    static constexpr int X_RESOLUTION                   = 352;
-    static constexpr int Y_RESOLUTION                   = 224;
-    static constexpr float RENDER_SCALE                 = 3.0f;
+    static constexpr int X_RESOLUTION = 352;
+    static constexpr int Y_RESOLUTION = 224;
+    static constexpr float RENDER_SCALE = 3.0f;
 
 public:
     static std::unique_ptr<Game> try_create();
@@ -69,5 +69,4 @@ private:
     ResourceLoader m_resource_loader { *this };
 };
 
-
-}
+} // namespace Engine
