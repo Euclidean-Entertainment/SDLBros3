@@ -26,6 +26,7 @@ public class AGFEd extends JFrame implements ActionListener {
 	
 	private JMenuItem loadSheetItem;
 	private JMenuItem saveAnimationItem;
+	private JMenuItem loadAnimationItem;
 	private JList<String> animationList;
 	private JList<String> frameList;
 	
@@ -327,13 +328,17 @@ public class AGFEd extends JFrame implements ActionListener {
 	    loadSheetItem = new JMenuItem("Load Sheet");
 	    loadSheetItem.addActionListener(this);
 	    
-	    saveAnimationItem = new JMenuItem("Save");
+	    saveAnimationItem = new JMenuItem("Export AGF");
 	    saveAnimationItem.addActionListener(this);
+	    
+	    loadAnimationItem = new JMenuItem("Import AGF");
+	    loadAnimationItem.addActionListener(this);
 	    
 	    JMenuBar menuBar = new JMenuBar();
 	    menuBar.add(fileMenu);
 	    fileMenu.add(loadSheetItem);
 	    fileMenu.add(saveAnimationItem);
+	    fileMenu.add(loadAnimationItem);
 	    
 	    return menuBar;
 	}
@@ -410,19 +415,19 @@ public class AGFEd extends JFrame implements ActionListener {
 	        try
             {
 	            JFileChooser fileChooser = new JFileChooser();
-	            fileChooser.setDialogTitle("Save AGF");
+	            fileChooser.setDialogTitle("Export AGF");
 	            fileChooser.setCurrentDirectory(new File("./"));
 	            int selection = fileChooser.showSaveDialog(sheetViewer);
 	            
 	            if (selection == JFileChooser.APPROVE_OPTION)
 	            {
 	                File chosenFile = fileChooser.getSelectedFile();
-	                if (!chosenFile.getAbsolutePath().endsWith(AGFExport.AGF_FILE_EXTENSION))
+	                if (!chosenFile.getAbsolutePath().endsWith(AGFDiskIO.AGF_FILE_EXTENSION))
 	                {
-	                    chosenFile = new File(fileChooser.getSelectedFile() + AGFExport.AGF_FILE_EXTENSION);
+	                    chosenFile = new File(fileChooser.getSelectedFile() + AGFDiskIO.AGF_FILE_EXTENSION);
 	                }
 	                
-	                AGFExport.saveAGF(animations, chosenFile);
+	                AGFDiskIO.saveAGF(animations, chosenFile);
 	            }
             } 
 	        catch (FileNotFoundException e1)
@@ -433,6 +438,54 @@ public class AGFEd extends JFrame implements ActionListener {
             {
                 e1.printStackTrace();
             }
+	    }
+	    else if (e.getSource() == loadAnimationItem)
+	    {
+            try
+            {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Import AGF");
+                fileChooser.setCurrentDirectory(new File("./"));
+                int selection = fileChooser.showSaveDialog(sheetViewer);
+                
+                if (selection == JFileChooser.APPROVE_OPTION)
+                {
+                    File chosenFile = fileChooser.getSelectedFile();
+                    if (!chosenFile.getAbsolutePath().endsWith(AGFDiskIO.AGF_FILE_EXTENSION))
+                    {
+                        chosenFile = new File(fileChooser.getSelectedFile() + AGFDiskIO.AGF_FILE_EXTENSION);
+                    }
+                    
+                    animations = AGFDiskIO.loadAGF(chosenFile);
+                    if (animations == null)
+                    {
+                        return;
+                    }
+
+                    animationListModel.clear();
+                    frameListModel.clear();
+                    for (int i = 0; i < animations.size(); i++)
+                    {
+                        Animation animation = animations.get(i);
+                        animationListModel.addElement("Animation " + i);
+                        
+                        for (int j = 0; j < animation.frameCount(); j++)
+                        {
+                            frameListModel.addElement("Frame " + j);
+                        }
+                    }
+                    
+                    sheetViewer.repaint();
+                }
+            } 
+            catch (FileNotFoundException e1)
+            {
+                e1.printStackTrace();
+            } 
+            catch (Exception e1)
+            {
+                e1.printStackTrace();
+            }	     
 	    }
 	}
 }
