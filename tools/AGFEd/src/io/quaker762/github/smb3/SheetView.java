@@ -14,6 +14,7 @@ public class SheetView extends JComponent implements MouseListener, MouseMotionL
     private Image       sheetImage = null;
     private Animation   currentAnimation = null;
     private int         currentFrameIndex = 0;
+    private boolean     showFrameNumbers = false;
     
     private DefaultListModel<String> frameDataModel;
     
@@ -49,7 +50,13 @@ public class SheetView extends JComponent implements MouseListener, MouseMotionL
                 }
                 g.drawRect(frame.x, frame.y, frame.width, frame.height);
                 g.setColor(new Color(50, 168, 64));
-                g.drawString(Integer.toString(currentFrame++), frame.x + 2, frame.y + 10);
+                
+                if (showFrameNumbers == true)
+                {
+                    g.drawString(Integer.toString(currentFrame), frame.x + 2, frame.y + 10);
+                }
+                
+                currentFrame++;
             }
         }
        
@@ -74,6 +81,11 @@ public class SheetView extends JComponent implements MouseListener, MouseMotionL
     public void setCurrentFrameIndex(int frameIndex)
     {
         this.currentFrameIndex = frameIndex;
+    }
+    
+    public void setShowFrameNumber(boolean showFrameNumbers)
+    {
+        this.showFrameNumbers = showFrameNumbers;
     }
     
     @Override

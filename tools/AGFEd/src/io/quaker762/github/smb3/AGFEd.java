@@ -27,6 +27,7 @@ public class AGFEd extends JFrame implements ActionListener {
 	private JMenuItem loadSheetItem;
 	private JMenuItem saveAnimationItem;
 	private JMenuItem loadAnimationItem;
+	private JCheckBoxMenuItem showFrameNumberItem;
 	private JList<String> animationList;
 	private JList<String> frameList;
 	
@@ -325,6 +326,7 @@ public class AGFEd extends JFrame implements ActionListener {
 	public JMenuBar buildMenuBarPanel()
 	{
 	    JMenu fileMenu = new JMenu("File");
+	    JMenu configMenu = new JMenu("Configuration");
 	    loadSheetItem = new JMenuItem("Load Sheet");
 	    loadSheetItem.addActionListener(this);
 	    
@@ -334,11 +336,17 @@ public class AGFEd extends JFrame implements ActionListener {
 	    loadAnimationItem = new JMenuItem("Import AGF");
 	    loadAnimationItem.addActionListener(this);
 	    
+	    showFrameNumberItem = new JCheckBoxMenuItem("Show frame numbers");
+	    showFrameNumberItem.addActionListener(this);
+	    
 	    JMenuBar menuBar = new JMenuBar();
 	    menuBar.add(fileMenu);
 	    fileMenu.add(loadSheetItem);
 	    fileMenu.add(saveAnimationItem);
 	    fileMenu.add(loadAnimationItem);
+	    
+	    menuBar.add(configMenu);
+	    configMenu.add(showFrameNumberItem);
 	    
 	    return menuBar;
 	}
@@ -486,6 +494,10 @@ public class AGFEd extends JFrame implements ActionListener {
             {
                 e1.printStackTrace();
             }	     
+	    }
+	    else if (e.getSource() == showFrameNumberItem)
+	    {
+	        sheetViewer.setShowFrameNumber(showFrameNumberItem.getState());
 	    }
 	}
 }
