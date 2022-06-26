@@ -23,8 +23,8 @@ class Game
     static constexpr uint32_t TARGET_FRAMERATE = 60u;
     static constexpr uint32_t TARGET_FRAME_TIME = MILLISECONDS_PER_SECOND / TARGET_FRAMERATE;
 
-    static constexpr int X_RESOLUTION = 352;
-    static constexpr int Y_RESOLUTION = 224;
+    static constexpr int X_RESOLUTION = 256;
+    static constexpr int Y_RESOLUTION = 240;
     static constexpr float RENDER_SCALE = 3.0f;
 
 public:
