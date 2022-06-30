@@ -55,7 +55,7 @@ bool AnimationGroup::load(std::string const& path)
             return false;
         }
 
-        if (strncmp(ANIMATION_GROUP_HEADER_MAGIC, file_header.magic, sizeof(agf_file_header::magic)) != 0)
+        if (strncmp(ANIMATION_GROUP_ANIMATION_MAGIC, animation_header.magic, sizeof(agf_animation_header::magic)) != 0)
         {
             log(LogLevel::CRIT, "Invalid animation header! Got %s!", animation_header.magic);
             return false;
