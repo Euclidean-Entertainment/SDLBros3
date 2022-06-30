@@ -78,10 +78,14 @@ set(CMAKE_CXX_FLAGS "${CXX_FLAGS} ${CMAKE_CXX_FLAGS}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
 # Download doctest testing framework
-file(DOWNLOAD
-     ${DOCTEST_URL}
-     ${PROJECT_SOURCE_DIR}/source/doctest.h
-     SHOW_PROGRESS)
+if(EXISTS "${PROJECT_SOURCE_DIR}/source/doctest.h")
+    message("doctest.h already exists!")
+else()
+    file(DOWNLOAD
+         ${DOCTEST_URL}
+         ${PROJECT_SOURCE_DIR}/source/doctest.h
+         SHOW_PROGRESS)
+endif()
 
 add_subdirectory(source)
 
