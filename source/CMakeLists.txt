@@ -1,7 +1,6 @@
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 include_directories("./")
-include_directories(SYSTEM "../third_party/debugbreak")
 include_directories(SYSTEM "${SDL2_INCLUDE_DIRS}/..")
 include_directories(SYSTEM "${SDL2_IMAGE_INCLUDE_DIRS}/..")
 
