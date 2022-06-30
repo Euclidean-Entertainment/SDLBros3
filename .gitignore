@@ -33,3 +33,6 @@
 
 # Build directory
 build
+
+# Doctest header
+./source/doctest.h

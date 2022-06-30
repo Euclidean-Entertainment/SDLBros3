@@ -5,6 +5,9 @@ project(sdlbros CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(BUILD_TESTS ON CACHE BOOL "Build unit test programs")
+set(DOCTEST_VERSION "v2.4.9")
+set(DOCTEST_URL "https://github.com/doctest/doctest/releases/download/${DOCTEST_VERSION}/doctest.h")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -74,6 +77,14 @@ endif()
 set(CMAKE_CXX_FLAGS "${CXX_FLAGS} ${CMAKE_CXX_FLAGS}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
+# Download doctest testing framework
+file(DOWNLOAD
+     ${DOCTEST_URL}
+     ${PROJECT_SOURCE_DIR}/source/doctest.h
+     SHOW_PROGRESS)
+
 add_subdirectory(source)
 
-
+if(BUILD_TESTS)
+    add_subdirectory(tests)
+endif()
