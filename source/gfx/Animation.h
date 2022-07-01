@@ -33,6 +33,7 @@ public:
     Frame const& next_frame() const;
 
     uint32_t ticks_per_frame() const { return m_ticks_per_frame; }
+    std::vector<Frame>::size_type frame_count() const { return m_frames.size(); }
 
 private:
     uint32_t m_ticks_per_frame { 0u };
