@@ -12,6 +12,16 @@ add_executable(file_test
 )
 set_target_properties(file_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests")
 
+add_executable(agf_test
+    "./gfx/agf_test.cpp"
+
+    "../source/gfx/Animation.cpp"
+    "../source/gfx/AnimationGroup.cpp"
+    "../source/system/File.cpp"
+    "../source/system/Log.cpp"
+)
+set_target_properties(agf_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests")
+
 add_custom_command(TARGET "file_test" PRE_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy_directory
                    ${CMAKE_SOURCE_DIR}/tests/test_data ${CMAKE_BINARY_DIR}/tests/test_data)
