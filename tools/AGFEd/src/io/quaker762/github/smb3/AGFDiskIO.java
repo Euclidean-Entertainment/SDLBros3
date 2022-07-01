@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class AGFDiskIO
 {
     public static final String  AGF_FILE_EXTENSION = ".agf";
-    private static final byte   FILE_HEADER_MAGIC[] = { 'S', 'M', 'B', 'A', 'N', 'M', '0', 0 };
+    private static final byte   FILE_HEADER_MAGIC[] = { 'S', 'M', 'B', '3', 'A', 'N', 'M', 0 };
     private static final byte   ANIMATION_HEADER_MAGIC[] = { 'A', 'D', 'H', 0 };
     private static final byte   AGF_VERSION_MAJOR = 0;
     private static final byte   AGF_VERSION_MINOR = 1;
