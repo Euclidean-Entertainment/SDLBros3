@@ -48,6 +48,9 @@ public:
 
     bool load(std::string const& path);
 
+    Animation const& animation(std::vector<Animation>::size_type index);
+    std::vector<Animation>::size_type animation_count() const { return m_animations.size(); }
+
 private:
     std::vector<Animation> m_animations;
 };

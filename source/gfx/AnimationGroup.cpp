@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#include <Assertions.h>
 #include <gfx/AnimationGroup.h>
 #include <system/File.h>
 #include <system/Log.h>
@@ -88,6 +89,13 @@ bool AnimationGroup::load(std::string const& path)
     }
 
     return true;
+}
+
+Animation const& AnimationGroup::animation(std::vector<Animation>::size_type index)
+{
+    ASSERT(index < m_animations.size());
+
+    return m_animations.at(index);
 }
 
 }; // namespace GFX
