@@ -27,8 +27,8 @@ void SpriteSheet::draw(SDL_Renderer* renderer, int x, int y, int sheet_x, int sh
     SDL_Rect dest_rect;
 
     // Disgusting casts as SDL uses signed types to represent x and y(?)
-    sheet_rect.x = sheet_x * m_xsize;
-    sheet_rect.y = sheet_y * m_ysize;
+    sheet_rect.x = sheet_x;
+    sheet_rect.y = sheet_y;
     sheet_rect.w = m_xsize;
     sheet_rect.h = m_ysize;
 
