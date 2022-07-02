@@ -35,4 +35,4 @@
 build
 
 # Doctest header
-./source/doctest.h
+source/doctest.h
