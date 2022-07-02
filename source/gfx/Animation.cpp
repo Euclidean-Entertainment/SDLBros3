@@ -16,8 +16,8 @@ Animation::Animation(uint32_t ticks_per_frame)
 
 Animation::Frame const& Animation::next_frame() const
 {
-    ASSERT((m_current_frame % m_frame_count) < m_frames.size());
-    return m_frames.at(m_current_frame % m_frame_count);
+    ASSERT((m_current_frame % frame_count()) < m_frames.size());
+    return m_frames.at(m_current_frame % frame_count());
 }
 
 void Animation::add_frame(Frame const& frame)
@@ -34,6 +34,26 @@ Animation::Frame const& Animation::frame(size_t frame) const
 {
     ASSERT(frame < m_frames.size());
     return m_frames.at(frame);
+}
+
+Animation::Frame const& Animation::current_frame() const
+{
+    return m_frames.at(m_current_frame);
+}
+
+void Animation::tick()
+{
+    if (m_current_tick < m_ticks_per_frame)
+    {
+        m_current_tick++;
+    }
+    else
+    {
+        m_current_frame++;
+        m_current_tick = 0u;
+        if (m_current_frame >= frame_count())
+            m_current_frame = 0u;
+    }
 }
 
 }; // namespace GFX

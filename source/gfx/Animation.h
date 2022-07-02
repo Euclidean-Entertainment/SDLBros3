@@ -28,17 +28,19 @@ public:
     void set_ticks_per_frame(uint32_t ticks_per_frame) { m_ticks_per_frame = ticks_per_frame; }
     void add_frame(Frame const& frame);
     void add_frame(int x, int y, int w, int h);
+    void tick();
 
     Frame const& frame(size_t frame) const;
     Frame const& next_frame() const;
+    Frame const& current_frame() const;
 
     uint32_t ticks_per_frame() const { return m_ticks_per_frame; }
     std::vector<Frame>::size_type frame_count() const { return m_frames.size(); }
 
 private:
     uint32_t m_ticks_per_frame { 0u };
-    uint32_t m_frame_count { 0u };
     uint32_t m_current_frame { 0u };
+    uint32_t m_current_tick { 0u };
     std::vector<Frame> m_frames;
 };
 
