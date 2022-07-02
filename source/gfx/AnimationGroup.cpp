@@ -11,8 +11,8 @@
 
 namespace GFX {
 
-static constexpr bool AGF_DEBUG = true;
-static constexpr bool AGF_DEBUG_VERBOSE = true;
+static constexpr bool AGF_DEBUG = false;
+static constexpr bool AGF_DEBUG_VERBOSE = false;
 
 bool AnimationGroup::load(std::string const& path)
 {
