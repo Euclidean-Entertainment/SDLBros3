@@ -48,10 +48,14 @@ public:
 
     bool load(std::string const& path);
 
+    Animation& current_animation() { return m_animations.at(m_current_animation_index); }
+    void set_current_animation_index(std::vector<Animation>::size_type index) { m_current_animation_index = index; }
+
     Animation const& animation(std::vector<Animation>::size_type index);
     std::vector<Animation>::size_type animation_count() const { return m_animations.size(); }
 
 private:
+    std::vector<Animation>::size_type m_current_animation_index { 0u };
     std::vector<Animation> m_animations;
 };
 

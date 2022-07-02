@@ -67,6 +67,8 @@ bool AnimationGroup::load(std::string const& path)
         log_if(AGF_DEBUG, LogLevel::INFO, "Num Frames: \t%u", animation_header.number_of_frames);
         log_if(AGF_DEBUG, LogLevel::INFO, "Frame length: \t%u (ticks)", animation_header.frame_length);
 
+        // Setup animation data
+        animation.set_ticks_per_frame(animation_header.frame_length);
         for (auto frame = 0u; frame < animation_header.number_of_frames; frame++)
         {
             agf_animation_data animation_data;
