@@ -17,7 +17,7 @@ class FontRenderer final
     static constexpr uint8_t GLYPH_HEIGHT = GLYPH_WIDTH;
 
 public:
-    FontRenderer(ResourceLoader& loader);
+    explicit FontRenderer(ResourceLoader& loader);
     ~FontRenderer() = default;
 
     void draw_string(SDL_Renderer* renderer, int x, int y, std::string const& message);
