@@ -19,7 +19,7 @@ class ResourceLoader final
 
 public:
     ResourceLoader() = delete;
-    ResourceLoader(Game& game)
+    explicit ResourceLoader(Game& game)
     : m_game(game) {}
     ~ResourceLoader() = default;
 
