@@ -1,0 +1,26 @@
+name: Code Coverage
+on:
+  push:
+    branches:
+      - master
+      - coverage
+jobs:
+  build:
+    name: Build and run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: install_dependencies
+        run: |
+         sudo apt-get update -y -qq
+         sudo apt-get install libsdl2-dev libsdl2-image-dev lcov gcovr
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Run coverage targets
+        run: |
+          mkdir coverage
+          cd coverage
+          cmake -DCMAKE_BUILD_TYPE="Coverage" ../
+          make $(cmake --build . --target help | grep coverage | awk '{printf $NF " "}')
+          
