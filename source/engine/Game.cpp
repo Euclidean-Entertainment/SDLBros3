@@ -69,6 +69,7 @@ void Game::start()
 
 void Game::shutdown()
 {
+    // TODO: Cleanup!
 }
 
 void Game::handle_input()
