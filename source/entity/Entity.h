@@ -17,7 +17,7 @@ class Entity
 public:
     Entity() = default;
     Entity(uint8_t x_size, uint8_t y_size);
-    virtual ~Entity() {}
+    virtual ~Entity() = default;
 
     virtual void initialize(ResourceLoader& loader) = 0;
     virtual void update() = 0;
