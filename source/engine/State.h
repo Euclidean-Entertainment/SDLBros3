@@ -22,7 +22,7 @@ public:
     State(Game& game, SDL_Renderer* renderer);
     State(State const& rhs) = delete;
     State(State&&) = delete;
-    virtual ~State() {}
+    virtual ~State() = default;
 
     virtual void handle_input(SDL_Event const& event) = 0;
     virtual void tick_timers();
