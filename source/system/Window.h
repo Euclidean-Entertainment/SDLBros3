@@ -8,6 +8,7 @@
 
 #include <SDL2/SDL.h>
 #include <memory>
+#include <NonCopy.h>
 #include <string>
 #include <system/Renderer.h>
 
@@ -18,6 +19,8 @@ class Window
     static constexpr unsigned DEFAULT_WIDTH = 640;
     static constexpr unsigned DEFAULT_HEIGHT = 480;
 
+    MAKE_NONCOPYABLE(Window)
+    MAKE_NONMOVABLE(Window)
 public:
     static std::unique_ptr<Window> try_create(int width, int height, std::string const& title);
 
