@@ -29,7 +29,7 @@ set_target_properties(agf_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINA
 
 file(COPY ${CMAKE_SOURCE_DIR}/tests/test_data DESTINATION ${CMAKE_BINARY_DIR})
 
-if (${CMAKE_BUILD_TYPE} STREQUAL "Coverage")
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     if(CMAKE_COMPILER_IS_GNUCXX)
         include(CodeCoverage)
         target_link_libraries(agf_test gcov)
