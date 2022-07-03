@@ -39,7 +39,7 @@ bool Texture::load(SDL_Renderer* renderer, std::string const& path, std::string 
     return true;
 }
 
-Texture& Texture::operator=(Texture&& rhs)
+Texture& Texture::operator=(Texture&& rhs) noexcept
 {
     m_name = std::move(rhs.m_name);
     m_loaded = std::exchange(rhs.m_loaded, false);

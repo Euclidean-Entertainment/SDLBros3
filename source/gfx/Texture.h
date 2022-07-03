@@ -29,7 +29,7 @@ public:
     Texture() = default;
     ~Texture() = default;
 
-    Texture(Texture&& rhs)
+    Texture(Texture&& rhs) noexcept
     : m_name(std::move(rhs.m_name)),
       m_loaded(std::exchange(rhs.m_loaded, false)),
       m_width(std::exchange(rhs.m_width, 0)),
@@ -48,7 +48,7 @@ public:
 
     SDL_Texture* texture() const { return m_texture.get(); }
 
-    Texture& operator=(Texture&& rhs);
+    Texture& operator=(Texture&& rhs) noexcept;
 
 private:
     std::string m_name;
