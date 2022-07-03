@@ -24,14 +24,6 @@ std::unique_ptr<Game> Game::try_create()
     return game;
 }
 
-Game::Game()
-{
-}
-
-Game::~Game()
-{
-}
-
 bool Game::init()
 {
     // Initialise SDL

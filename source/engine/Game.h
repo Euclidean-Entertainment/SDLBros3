@@ -34,8 +34,8 @@ class Game
 public:
     static std::unique_ptr<Game> try_create();
 
-    Game();
-    ~Game();
+    Game() = default;
+    ~Game() = default;
 
     Game(Game const& game) = delete;
     Game(Game&& game) = delete;
