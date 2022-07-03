@@ -1,0 +1,15 @@
+ActionScript File format (ASF)
+
+This format describes a sequence of actions (defined as a "delay" (in ticks) and a command word) that describes a particular event in a
+state machine. This is a direct copy of the system employed by the original SMB3 ROM by the programmers at Nintendo R&D.
+
+====== File Header ======
+8-byte Magic (ASCII) (SMB3ASF\0)
+2-bytes: Number of events contained in this file
+1-byte: Version Major
+1-byte: Version Minor
+4-byte: Reserved for future use
+
+====== Event Data ======
+2-bytes: Event Delay
+2-bytes: Command
