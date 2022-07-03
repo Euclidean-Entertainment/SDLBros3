@@ -33,6 +33,7 @@ void TitleState::init_animations()
 
 void TitleState::handle_input(SDL_Event const&)
 {
+    // TODO: Handle input here
 }
 
 void TitleState::update()
