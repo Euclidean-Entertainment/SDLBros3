@@ -23,4 +23,12 @@ jobs:
           cd coverage
           cmake -DCMAKE_BUILD_TYPE="Coverage" ../
           make $(cmake --build . --target help | grep coverage | awk '{printf $NF " "}')
+          rm -rf $(ls | grep -v '\_coverage$')
+      - name: Archive coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-reports
+          path: coverage
+          retention-days: 1
+
           
