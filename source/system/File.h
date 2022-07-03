@@ -43,7 +43,7 @@ private:
     std::vector<uint8_t> m_data;
 };
 
-}; // namespace System
+} // namespace System
 
 using DiskFile = System::File;
 using System::File;

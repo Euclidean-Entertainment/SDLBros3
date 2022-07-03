@@ -80,4 +80,4 @@ long File::read(void* destination, long length)
     return number_of_bytes_to_read;
 }
 
-}; // namespace System
+} // namespace System

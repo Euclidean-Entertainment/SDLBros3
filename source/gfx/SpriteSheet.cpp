@@ -40,4 +40,4 @@ void SpriteSheet::draw(SDL_Renderer* renderer, int x, int y, int sheet_x, int sh
     (void)SDL_RenderCopy(renderer, m_texture.texture(), &sheet_rect, &dest_rect);
 }
 
-}; // namespace GFX
+} // namespace GFX

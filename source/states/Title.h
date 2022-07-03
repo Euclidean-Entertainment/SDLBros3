@@ -36,4 +36,4 @@ private:
     std::shared_ptr<Timer> m_curtain_timer { nullptr };
 };
 
-}; // namespace States
+} // namespace States

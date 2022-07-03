@@ -51,4 +51,4 @@ void TitleState::render()
     m_curtain.draw(m_renderer);
 }
 
-}; // namespace States
+} // namespace States

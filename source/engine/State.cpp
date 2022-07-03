@@ -38,4 +38,4 @@ std::shared_ptr<Timer> State::create_timer(uint32_t ticks, TimerType type)
     return create_timer(nullptr, ticks, type);
 }
 
-}; // namespace Engine
+} // namespace Engine

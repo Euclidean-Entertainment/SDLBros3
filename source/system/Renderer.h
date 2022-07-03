@@ -34,4 +34,4 @@ private:
     SDL_Renderer* m_renderer { nullptr };
 };
 
-}; // namespace System
+} // namespace System

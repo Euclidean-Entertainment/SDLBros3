@@ -26,4 +26,4 @@ private:
     SpriteSheet m_font_sheet { GLYPH_WIDTH, GLYPH_HEIGHT };
 };
 
-}; // namespace GFX
+} // namespace GFX

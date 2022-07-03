@@ -100,4 +100,4 @@ Animation const& AnimationGroup::animation(std::vector<Animation>::size_type ind
     return m_animations.at(index);
 }
 
-}; // namespace GFX
+} // namespace GFX

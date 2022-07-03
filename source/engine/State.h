@@ -39,6 +39,6 @@ protected:
     std::vector<std::shared_ptr<Timer>> m_timers;
 };
 
-}; // namespace Engine
+} // namespace Engine
 
 using Engine::State;

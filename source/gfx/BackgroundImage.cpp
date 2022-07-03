@@ -26,4 +26,4 @@ void BackgroundImage::draw(SDL_Renderer* renderer)
     SDL_RenderCopy(renderer, m_texture.texture(), NULL, &draw_rect);
 }
 
-}; // namespace GFX
+} // namespace GFX

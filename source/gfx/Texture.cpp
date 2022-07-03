@@ -50,4 +50,4 @@ Texture& Texture::operator=(Texture&& rhs)
     return *this;
 }
 
-}; // namespace GFX
+} // namespace GFX

@@ -58,4 +58,4 @@ private:
     std::unique_ptr<SDL_Texture, Deleter> m_texture { nullptr };
 };
 
-}; // namespace GFX
+} // namespace GFX

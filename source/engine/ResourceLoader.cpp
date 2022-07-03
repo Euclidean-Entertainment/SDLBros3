@@ -24,4 +24,4 @@ GFX::Texture ResourceLoader::load(std::string const& path, std::string const& na
     return texture;
 }
 
-}; // namespace Engine
+} // namespace Engine

@@ -56,4 +56,4 @@ void Animation::tick()
     }
 }
 
-}; // namespace GFX
+} // namespace GFX

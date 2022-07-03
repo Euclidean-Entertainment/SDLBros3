@@ -34,4 +34,4 @@ private:
     Texture m_texture; // Texture that holds this spritesheet
 };
 
-}; // namespace GFX
+} // namespace GFX

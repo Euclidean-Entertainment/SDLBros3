@@ -38,6 +38,6 @@ private:
     Texture m_texture;
 };
 
-}; // namespace GFX
+} // namespace GFX
 
 using GFX::BackgroundImage;

@@ -59,4 +59,4 @@ private:
     std::vector<Animation> m_animations;
 };
 
-}; // namespace GFX
+} // namespace GFX

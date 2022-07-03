@@ -67,4 +67,4 @@ void FontRenderer::draw_string(SDL_Renderer* renderer, int x, int y, std::string
     SDL_RenderCopy(renderer, string_texture, &from_rect, &to_rect);
 }
 
-}; // namespace GFX
+} // namespace GFX

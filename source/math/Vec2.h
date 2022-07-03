@@ -138,7 +138,7 @@ private:
     T m_y;
 };
 
-}; // namespace Math
+} // namespace Math
 
 using FloatVector2 = Math::Vec2<float>;
 using IntVector2 = Math::Vec2<int32_t>;

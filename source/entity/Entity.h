@@ -50,4 +50,4 @@ protected:
     uint32_t m_ticks { 0u };    // Internal tick counter for animation and updates
 };
 
-}; // namespace Entity
+} // namespace Entity

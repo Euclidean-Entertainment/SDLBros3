@@ -36,6 +36,6 @@ private:
     Game& m_game;
 };
 
-}; // namespace Engine
+} // namespace Engine
 
 using Engine::ResourceLoader;

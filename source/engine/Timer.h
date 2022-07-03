@@ -54,7 +54,7 @@ private:
     bool m_running { false };
 };
 
-}; // namespace Engine
+} // namespace Engine
 
 using Engine::Timer;
 using Engine::TimerType;
