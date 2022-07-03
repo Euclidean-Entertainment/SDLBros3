@@ -18,7 +18,7 @@ class TitleState : public Engine::State
 {
 public:
     TitleState(Engine::Game& game, SDL_Renderer* renderer);
-    virtual ~TitleState() override {}
+    virtual ~TitleState() override = default;
 
     // ^State
     virtual void handle_input(SDL_Event const& event) override;
