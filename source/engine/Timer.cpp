@@ -6,7 +6,7 @@
 
 #include "Timer.h"
 
-using namespace Engine;
+namespace Engine {
 
 Timer::Timer(uint32_t intervalInTicks, TimerType type)
 : Timer(nullptr, intervalInTicks, type)
@@ -41,4 +41,6 @@ void Timer::tick()
             m_running = false;
         }
     }
+}
+
 }
