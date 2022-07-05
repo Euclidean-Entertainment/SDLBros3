@@ -31,7 +31,7 @@ private:
     void init_resources();
     void init_animations();
 
-    void raise_curtin();
+    void raise_curtain();
 
 private:
     BackgroundImage m_floor;

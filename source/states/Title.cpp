@@ -28,11 +28,11 @@ void TitleState::init_resources()
 void TitleState::init_animations()
 {
     // Create a timer for the curtain animation to begin after 70 ticks.
-    m_curtain_timer = create_timer(std::bind(&TitleState::raise_curtin, this), CURTAIN_TIMER_DELAY_TICKS, TimerType::ONE_SHOT);
+    m_curtain_timer = create_timer(std::bind(&TitleState::raise_curtain, this), CURTAIN_TIMER_DELAY_TICKS, TimerType::ONE_SHOT);
     m_curtain_timer->start();
 }
 
-void TitleState::raise_curtin()
+void TitleState::raise_curtain()
 {
     m_should_raise_curtain = true;
 }
