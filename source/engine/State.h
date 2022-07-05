@@ -25,10 +25,10 @@ public:
     virtual ~State() = default;
 
     virtual void handle_input(SDL_Event const& event) = 0;
-    virtual void tick_timers();
     virtual void update() = 0;
     virtual void render() = 0;
 
+    void tick_timers();
     std::shared_ptr<Timer> create_timer(uint32_t ticks, TimerType type = TimerType::ONE_SHOT);
     std::shared_ptr<Timer> create_timer(std::function<void()> callback, uint32_t ticks, TimerType type = TimerType::ONE_SHOT);
 

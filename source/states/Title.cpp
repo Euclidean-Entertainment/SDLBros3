@@ -5,6 +5,7 @@
  */
 
 #include <states/Title.h>
+#include <system/Log.h>
 
 namespace States {
 
@@ -27,8 +28,13 @@ void TitleState::init_resources()
 void TitleState::init_animations()
 {
     // Create a timer for the curtain animation to begin after 70 ticks.
-    m_curtain_timer = create_timer(70, TimerType::ONE_SHOT);
+    m_curtain_timer = create_timer(std::bind(&TitleState::raise_curtin, this), CURTAIN_TIMER_DELAY_TICKS, TimerType::ONE_SHOT);
     m_curtain_timer->start();
+}
+
+void TitleState::raise_curtin()
+{
+    m_should_raise_curtain = true;
 }
 
 void TitleState::handle_input(SDL_Event const&)
@@ -38,12 +44,19 @@ void TitleState::handle_input(SDL_Event const&)
 
 void TitleState::update()
 {
-    // Curtain up animation.
-    if (m_curtain_timer->is_running())
+    if (m_should_raise_curtain)
     {
-        return;
+        if ((m_curtain.y() + m_curtain.height()) > 0)
+        {
+            m_curtain.set_y(m_curtain.y() - 2);
+        }
+        else
+        {
+            m_should_raise_curtain = false;
+        }
     }
-    m_curtain.set_y(m_curtain.y() - 2);
+
+    tick_timers();
 }
 
 void TitleState::render()

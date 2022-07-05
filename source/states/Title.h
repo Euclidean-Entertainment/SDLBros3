@@ -16,6 +16,8 @@ namespace States {
 
 class TitleState : public Engine::State
 {
+    static constexpr uint32_t CURTAIN_TIMER_DELAY_TICKS = 70u;
+
 public:
     TitleState(Engine::Game& game, SDL_Renderer* renderer);
     virtual ~TitleState() override = default;
@@ -29,11 +31,16 @@ private:
     void init_resources();
     void init_animations();
 
+    void raise_curtin();
+
 private:
     BackgroundImage m_floor;
     BackgroundImage m_curtain;
 
     std::shared_ptr<Timer> m_curtain_timer { nullptr };
+
+    // State flags
+    bool m_should_raise_curtain { false };
 };
 
 } // namespace States
