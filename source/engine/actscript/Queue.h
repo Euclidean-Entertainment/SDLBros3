@@ -44,7 +44,7 @@ public:
 
     bool load_from_file(std::string const& path);
     void enqueue_event(Event const& event);
-    void enqueue_event(uint16_t delay, uint8_t command);
+    void enqueue_event(uint16_t command, uint16_t delay);
     void flush();
 
     Event dequeue();

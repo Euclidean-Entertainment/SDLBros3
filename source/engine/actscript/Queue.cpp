@@ -15,10 +15,9 @@ void Queue::enqueue_event(Queue::Event const& event)
     m_queue.push(event);
 }
 
-void Queue::enqueue_event(uint16_t delay, uint8_t command)
+void Queue::enqueue_event(uint16_t command, uint16_t delay)
 {
-    m_queue.emplace(delay, command);
-    ;
+    m_queue.emplace(command, delay);
 }
 
 void Queue::flush()
