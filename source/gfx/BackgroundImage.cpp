@@ -26,4 +26,17 @@ void BackgroundImage::draw(SDL_Renderer* renderer)
     SDL_RenderCopy(renderer, m_texture.texture(), NULL, &draw_rect);
 }
 
+void BackgroundImage::set_alpha(uint8_t alpha)
+{
+    auto sdl_rc = SDL_SetTextureAlphaMod(m_texture.texture(), alpha);
+    if (sdl_rc != 0)
+    {
+        auto const* error_message = SDL_GetError();
+        log(LogLevel::WARN, "Failed to set texture (%s) alpha! Reason: %s", m_texture.name().c_str(), error_message);
+        return;
+    }
+
+    m_alpha = alpha;
+}
+
 } // namespace GFX
