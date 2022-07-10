@@ -55,8 +55,6 @@ void TitleState::update()
             m_should_raise_curtain = false;
         }
     }
-
-    tick_timers();
 }
 
 void TitleState::render()
