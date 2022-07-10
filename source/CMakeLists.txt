@@ -1,5 +1,6 @@
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 include_directories("./")
 include_directories(SYSTEM "${SDL2_INCLUDE_DIRS}/..")
 include_directories(SYSTEM "${SDL2_IMAGE_INCLUDE_DIRS}/..")
@@ -46,6 +47,7 @@ add_executable("${CMAKE_PROJECT_NAME}"
 target_link_libraries("${CMAKE_PROJECT_NAME}"
     PRIVATE "${SDL2_LIBRARIES}"
     PRIVATE "${SDL2_IMAGE_LIBRARIES}"
+    PRIVATE nlohmann_json::nlohmann_json
 )
 
 # Copy data directory to build directory
