@@ -31,7 +31,7 @@ add_executable(actscript_test
     "./engine/actscript_test.cpp"
 
     "../source/engine/actscript/Queue.cpp"
-    "../source/system/File.cpp"
+    "../source/system/JSONFile.cpp"
     "../source/system/Log.cpp"
 )
 set_target_properties(actscript_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests")

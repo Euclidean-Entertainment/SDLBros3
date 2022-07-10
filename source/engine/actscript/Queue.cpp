@@ -7,17 +7,27 @@
 #include <cstring>
 #include <engine/actscript/Queue.h>
 #include <system/Log.h>
+#include <system/JSONFile.h>
 
 namespace Engine::ActScript {
+
+// Free-floating function to allow `json::get<>` to work with our
+// event struct
+void from_json(nlohmann::json const& j, Queue::Event& event)
+{
+    j.at("delay").get_to(event.delay);
+    j.at("command_id").get_to(event.command_id);
+    j.at("name").get_to(event.name);
+}
 
 void Queue::enqueue_event(Queue::Event const& event)
 {
     m_queue.push(event);
 }
 
-void Queue::enqueue_event(uint16_t command, uint16_t delay)
+void Queue::enqueue_event(uint32_t delay, uint16_t command, std::string const& name)
 {
-    m_queue.emplace(command, delay);
+    m_queue.emplace(delay, command, name);
 }
 
 void Queue::flush()
@@ -39,48 +49,13 @@ bool Queue::load_from_file(std::string const& path)
     // Purge the queue
     flush();
 
-    DiskFile asf_file;
-    if (asf_file.open(path) == false)
+    // Get all events from the JSON File
+    JSONFile file(path);
+    if (file.loaded() == false)
         return false;
 
-    asf_header header;
-    auto bytes_read = asf_file.read(&header, sizeof(header));
-    if (bytes_read != sizeof(header))
-    {
-        log(LogLevel::WARN, "Didn't read enough bytes for ASF header (is the file corrupt?)!");
-        return false;
-    }
-
-    if (strncmp(header.magic, asf_header::MAGIC, sizeof(asf_header::magic)) != 0u)
-    {
-        log(LogLevel::WARN, "Bad ASF header magic! Got %s", header.magic);
-        return false;
-    }
-
-    if (header.number_of_events == 0u)
-    {
-        log(LogLevel::WARN, "Bad number of events in ASF header!");
-        return false;
-    }
-
-    for (auto i = 0u; i < header.number_of_events; i++)
-    {
-        uint32_t value;
-        bytes_read = asf_file.read(&value, sizeof(uint32_t));
-        if (bytes_read != sizeof(uint32_t))
-        {
-            // Flush whatever is already in the queue
-            flush();
-            log(LogLevel::WARN, "Didn't read enough bytes for event!");
-
-            return false;
-        }
-
-        uint16_t command = static_cast<uint16_t>((value >> 16U) & 0xFFFFU);
-        uint16_t delay = static_cast<uint16_t>(value & 0xFFFFu);
-
-        m_queue.push(Event(command, delay));
-    }
+    for (auto const& event : file.json().at("events"))
+        m_queue.push(event.get<Queue::Event>());
 
     return true;
 }

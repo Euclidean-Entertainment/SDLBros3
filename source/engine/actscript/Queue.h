@@ -9,33 +9,22 @@
 #include <NonCopy.h>
 #include <cstdint>
 #include <queue>
-#include <system/File.h>
+#include <string>
+#include <nlohmann/json.hpp>
 
 namespace Engine::ActScript {
 
 class Queue final
 {
-private:
-    struct [[gnu::packed]] asf_header
-    {
-        static constexpr char const* MAGIC = "SMB3ASF\0";
-        char magic[8];
-        uint16_t number_of_events;
-        uint8_t major_version;
-        uint8_t minor_version;
-        uint8_t reserved[4];
-    };
-
 public:
     struct Event
     {
-        Event(uint16_t command, uint16_t delay)
-        : command(command), delay(delay) {}
-        Event(Event const& event)
-        : command(event.command), delay(event.delay) {}
-
-        uint16_t command;
-        uint16_t delay;
+        Event() = default;
+        Event(uint32_t delay, uint16_t command_id, std::string const& name)
+            : delay(delay), command_id(command_id), name(name){}
+        uint32_t delay;
+        uint16_t command_id;
+        std::string name;
     };
 
 public:
@@ -44,7 +33,7 @@ public:
 
     bool load_from_file(std::string const& path);
     void enqueue_event(Event const& event);
-    void enqueue_event(uint16_t command, uint16_t delay);
+    void enqueue_event(uint32_t delay, uint16_t command, std::string const& name);
     void flush();
 
     Event dequeue();
@@ -55,6 +44,7 @@ private:
     std::queue<Event> m_queue;
 };
 
-using ActionScriptEvent = Queue::Event;
-
 } // namespace Engine::ActScript
+
+using ActionScriptEvent = Engine::ActScript::Queue::Event;
+using ActionScriptQueue = Engine::ActScript::Queue;

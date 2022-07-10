@@ -1,0 +1,24 @@
+{
+    "events" : [
+        {
+            "delay": 10,
+            "command_id": 1,
+            "name": "event"
+        },
+        {
+            "delay": 20,
+            "command_id": 2,
+            "name": "event2"
+        },
+        {
+            "delay": 30,
+            "command_id": 3,
+            "name": "event3"
+        },
+        {
+            "delay": 40,
+            "command_id": 4,
+            "name": "event4"
+        }
+    ]
+}

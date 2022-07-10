@@ -28,3 +28,5 @@ private:
 };
 
 } // namespace System
+
+using System::JSONFile;
