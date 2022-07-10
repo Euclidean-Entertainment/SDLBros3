@@ -19,7 +19,7 @@ jobs:
       - name: install_dependencies
         run: |
          sudo apt-get update -y -qq
-         sudo apt-get install libsdl2-dev libsdl2-image-dev
+         sudo apt-get install libsdl2-dev libsdl2-image-dev nlohmann-json3-dev 
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
