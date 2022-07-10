@@ -9,14 +9,14 @@
 namespace Engine {
 
 Timer::Timer(uint32_t intervalInTicks, TimerType type)
-: Timer(nullptr, intervalInTicks, type)
+    : Timer(nullptr, intervalInTicks, type)
 {
 }
 
 Timer::Timer(std::function<void()> callback, uint32_t interval, TimerType type)
-: m_callback(callback),
-  m_interval(interval),
-  m_type(type)
+    : m_callback(callback),
+      m_interval(interval),
+      m_type(type)
 {
 }
 
@@ -43,4 +43,4 @@ void Timer::tick()
     }
 }
 
-}
+} // namespace Engine

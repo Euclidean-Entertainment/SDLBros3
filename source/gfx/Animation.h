@@ -17,7 +17,7 @@ public:
     struct Frame
     {
         explicit Frame(int x, int y, int w, int h)
-        : sheet_rect({ x, y, w, h }) {}
+            : sheet_rect({ x, y, w, h }) {}
         SDL_Rect sheet_rect {};
     };
 

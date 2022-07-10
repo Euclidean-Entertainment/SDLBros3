@@ -30,9 +30,9 @@ std::unique_ptr<Window> Window::try_create(int width, int height, std::string co
 }
 
 Window::Window(int width, int height, std::string const& title)
-: m_width(width),
-  m_height(height),
-  m_title(title)
+    : m_width(width),
+      m_height(height),
+      m_title(title)
 {
 }
 

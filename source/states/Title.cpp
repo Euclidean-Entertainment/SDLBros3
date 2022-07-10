@@ -10,7 +10,7 @@
 namespace States {
 
 TitleState::TitleState(Engine::Game& game, SDL_Renderer* renderer)
-: State(game, renderer)
+    : State(game, renderer)
 {
     init_resources();
     init_animations();

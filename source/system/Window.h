@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include <NonCopy.h>
 #include <SDL2/SDL.h>
 #include <memory>
-#include <NonCopy.h>
 #include <string>
 #include <system/Renderer.h>
 
@@ -21,6 +21,7 @@ class Window
 
     MAKE_NONCOPYABLE(Window)
     MAKE_NONMOVABLE(Window)
+
 public:
     static std::unique_ptr<Window> try_create(int width, int height, std::string const& title);
 

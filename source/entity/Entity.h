@@ -47,7 +47,7 @@ protected:
     bool m_is_animated { true };
     bool m_should_animate { true };
 
-    uint32_t m_ticks { 0u };    // Internal tick counter for animation and updates
+    uint32_t m_ticks { 0u }; // Internal tick counter for animation and updates
 };
 
 } // namespace Entity

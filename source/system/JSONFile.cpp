@@ -11,8 +11,8 @@
 namespace System {
 
 JSONFile::JSONFile(std::string const& path)
-: m_json(),
-  m_loaded(false)
+    : m_json(),
+      m_loaded(false)
 {
     auto load_rc = load(path);
     if (load_rc == false)

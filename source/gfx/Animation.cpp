@@ -10,7 +10,7 @@
 namespace GFX {
 
 Animation::Animation(uint32_t ticks_per_frame)
-: m_ticks_per_frame(ticks_per_frame)
+    : m_ticks_per_frame(ticks_per_frame)
 {
 }
 

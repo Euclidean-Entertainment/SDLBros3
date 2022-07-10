@@ -25,7 +25,7 @@ class Game
 
     static constexpr int X_RESOLUTION_NTSC = 256;
     static constexpr int Y_RESOLUTION_NTSC = 224;
-    static constexpr int Y_RESOLUTION_PAL  = 240;
+    static constexpr int Y_RESOLUTION_PAL = 240;
 
     static constexpr int X_RESOLUTION = 256;
     static constexpr int Y_RESOLUTION = Y_RESOLUTION_NTSC;

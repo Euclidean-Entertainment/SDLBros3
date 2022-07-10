@@ -9,8 +9,8 @@
 namespace GFX {
 
 SpriteSheet::SpriteSheet(uint8_t xsize, uint8_t ysize)
-: m_xsize(xsize),
-  m_ysize(ysize)
+    : m_xsize(xsize),
+      m_ysize(ysize)
 {
 }
 

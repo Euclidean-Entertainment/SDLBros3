@@ -18,11 +18,11 @@ class Vec2
 public:
     Vec2() = default;
     Vec2(T x, T y)
-    : m_x(x), m_y(y) {}
+        : m_x(x), m_y(y) {}
     Vec2(Vec2 const& rhs)
-    : m_x(rhs.m_x), m_y(rhs.m_y) {}
+        : m_x(rhs.m_x), m_y(rhs.m_y) {}
     Vec2(Vec2&& rhs) noexcept
-    : m_x(std::exchange(rhs.m_x, 0)), m_y(std::exchange(rhs.m_y, 0)) {}
+        : m_x(std::exchange(rhs.m_x, 0)), m_y(std::exchange(rhs.m_y, 0)) {}
     ~Vec2() = default;
 
     Vec2 operator=(Vec2 const& rhs)

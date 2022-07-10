@@ -20,7 +20,7 @@ class ResourceLoader final
 public:
     ResourceLoader() = delete;
     explicit ResourceLoader(Game& game)
-    : m_game(game) {}
+        : m_game(game) {}
     ~ResourceLoader() = default;
 
     template<typename T>

@@ -38,7 +38,7 @@ BreakInheritanceList: BeforeColon
 BreakStringLiterals: 'false'
 CompactNamespaces: 'true'
 ColumnLimit: '0'
-ConstructorInitializerIndentWidth: '0'
+ConstructorInitializerIndentWidth: '4'
 ContinuationIndentWidth: '0'
 Cpp11BracedListStyle: 'false'
 EmptyLineBeforeAccessModifier: Always

@@ -23,4 +23,4 @@ bool Entity::load_animation_group(std::string const& path)
     return m_animation_group.load(path);
 }
 
-}
+} // namespace Entity
